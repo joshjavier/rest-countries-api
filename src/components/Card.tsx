@@ -1,30 +1,18 @@
 import { Country } from '../data/entities'
 import Flag from './Flag'
+import CountryInfo from './CountryInfo'
 
 interface Props {
   country: Country
 }
 
 const Card = (props: Props) => {
-  const { name, population, region, capital, flags } = props.country
-
   return (
-    <div>
-      <div>
-        <Flag png={flags.png} />
+    <div className="card">
+      <div className="frame">
+        <Flag png={props.country.flags.png} />
       </div>
-      <div>
-        <h3>{name}</h3>
-        <p>
-          <span>Population:</span> {population.toLocaleString('en-US')}
-        </p>
-        <p>
-          <span>Region:</span> {region}
-        </p>
-        <p>
-          <span>Capital:</span> {capital || 'None'}
-        </p>
-      </div>
+      <CountryInfo country={props.country} level="summary" />
     </div>
   )
 }

@@ -1,0 +1,18 @@
+@import 'tailwindcss/base';
+
+@import 'global/reset.css';
+@import 'global/global-styles.css';
+
+@import 'tailwindcss/components';
+
+/* Blocks */
+/* @import 'blocks/button.css'; */
+@import 'blocks/country-info.css';
+
+/* Compositions */
+
+/* Utilities */
+@import 'utilities/frame.css';
+@import 'utilities/wrapper.css';
+
+@import 'tailwindcss/utilities';
