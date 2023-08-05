@@ -1,33 +1,36 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 
+import Card from './components/Card'
+import Details from './components/Details'
+import { Country } from './data/entities'
+import data from '../data.json'
+
+const countries = data.countries as Country[]
+
 function App() {
-  const [count, setCount] = useState(0)
+  const [index, setIndex] = useState<number>(0)
+
+  // const country = countries.find((c) => c.name === 'Indonesia') as Country
+  const country = countries.find((_, i) => i === index) as Country
+  // console.log(country)
+
+  // const moreThanOne = countries.filter((c) => c.currencies?.length > 1)
+  // console.log(moreThanOne)
+  // console.log(moreThanOne[0].currencies?.map((c) => c.name).join(', '))
+
+  // const noData = countries.filter((c) => !c.borders)
+  // console.log(noData)
+
+  const handleClick = () => {
+    setIndex(Math.floor(Math.random() * countries.length))
+  }
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <button onClick={handleClick}>🎲 Randomize</button>
+      <Card country={country} />
+      <Details country={country} countries={countries} />
     </>
   )
 }
