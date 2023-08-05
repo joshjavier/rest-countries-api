@@ -1,9 +1,12 @@
 import { Country } from '../data/entities'
+import CountryButton from './CountryButton'
 import InfoLine from './InfoLine'
 
 interface Props {
   country: Country
   level: 'summary' | 'detail'
+  countries: Country[]
+  navToCountry: (code: string) => void
 }
 
 const CountryInfo = (props: Props) => {
@@ -17,6 +20,7 @@ const CountryInfo = (props: Props) => {
     topLevelDomain,
     currencies,
     languages,
+    borders,
   } = props.country
 
   const pop = population.toLocaleString('en-US')
@@ -37,6 +41,22 @@ const CountryInfo = (props: Props) => {
           <InfoLine title="Top Level Domain" text={tld} />
           <InfoLine title="Currencies" text={curr} />
           <InfoLine title="Languages" text={lang} />
+          {borders && (
+            <InfoLine title="Border Countries">
+              <ul className="cluster">
+                {borders
+                  .map((b) => props.countries.find((c) => c.alpha3Code === b)!)
+                  .map((c) => (
+                    <li key={c.alpha3Code}>
+                      <CountryButton
+                        country={c}
+                        callback={props.navToCountry}
+                      />
+                    </li>
+                  ))}
+              </ul>
+            </InfoLine>
+          )}
         </>
       ) : (
         <>

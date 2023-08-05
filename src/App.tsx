@@ -26,6 +26,11 @@ function App() {
     setIndex(Math.floor(Math.random() * countries.length))
   }
 
+  const navToCountry = (code: string) => {
+    const country = countries.findIndex((c) => c.alpha3Code === code)
+    setIndex(country)
+  }
+
   useEffect(() => {
     const antarctica = countries.findIndex((c) => c.name === 'Antarctica')
     setIndex(antarctica)
@@ -36,7 +41,12 @@ function App() {
       <Header title="Where in the world?" />
       <button onClick={handleClick}>🎲 Randomize</button>
       <Card country={country} />
-      <CountryInfo country={country} level="detail" />
+      <CountryInfo
+        country={country}
+        countries={countries}
+        level="detail"
+        navToCountry={navToCountry}
+      />
     </>
   )
 }
