@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "json-server": "^0.17.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
@@ -23,7 +24,9 @@
     "eslint-config-prettier": "^8.10.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.3",
+    "postcss-lightningcss": "^0.9.0",
     "prettier": "3.0.1",
+    "tailwindcss": "^3.3.3",
     "typescript": "^5.0.2",
     "vite": "^4.4.5"
   }
