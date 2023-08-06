@@ -1,3 +1,5 @@
+import { forwardRef } from 'react'
+import { Link } from 'react-router-dom'
 import { getCountry } from '../countries'
 import { Country } from '../data/entities'
 import CountryButton from './CountryButton'
@@ -9,9 +11,12 @@ interface Props {
   navToCountry?: (code: string) => void
 }
 
-const CountryInfo = (props: Props) => {
+export type Ref = HTMLAnchorElement
+
+const CountryInfo = forwardRef<Ref, Props>((props, ref) => {
   const {
     name,
+    alpha3Code,
     nativeName,
     population,
     region,
@@ -63,7 +68,11 @@ const CountryInfo = (props: Props) => {
     </>
   ) : (
     <>
-      <h3>{name}</h3>
+      <h3>
+        <Link to={`country/${alpha3Code}`} ref={ref}>
+          {name}
+        </Link>
+      </h3>
       <div className="[ infolines ] [ flow ]">
         <InfoLine title="Population" text={pop} />
         <InfoLine title="Region" text={region} />
@@ -71,6 +80,6 @@ const CountryInfo = (props: Props) => {
       </div>
     </>
   )
-}
+})
 
 export default CountryInfo

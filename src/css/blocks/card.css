@@ -6,6 +6,7 @@
     0 4px 6px -4px rgb(0 0 0 / 0.1);
   overflow: hidden;
   height: 100%;
+  max-inline-size: 328px;
 }
 
 .card .flag > img {
@@ -26,4 +27,23 @@
 
 .card .text > :first-child {
   @apply text-lg leading-tight mb-4;
+}
+
+/* Hover/focus styles */
+
+.card:hover {
+  box-shadow: 0 0 0 0.25rem;
+}
+
+.card a:focus {
+  text-decoration: underline;
+}
+
+.card:focus-within {
+  box-shadow: 0 0 0 0.25rem;
+}
+
+.card:focus-within a:focus {
+  text-decoration: none;
+  outline: none;
 }

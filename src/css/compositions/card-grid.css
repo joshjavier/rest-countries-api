@@ -2,4 +2,5 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   gap: calc(48 / 16 * 1rem + (75 - 48) * var(--fluid-bp));
+  justify-items: center;
 }

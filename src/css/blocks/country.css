@@ -15,6 +15,7 @@
 
 .country .flag {
   flex-basis: 70%;
+  @apply shadow-sm;
 }
 
 .country .flag > img {
