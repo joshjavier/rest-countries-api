@@ -8,7 +8,7 @@
   @apply text-sm;
 }
 
-.searchbox > svg {
+.searchbox svg {
   @apply text-light-shade;
   position: absolute;
   top: 50%;
@@ -18,7 +18,7 @@
   height: var(--icon-size);
 }
 
-.searchbox > input {
+.searchbox input {
   @apply rounded-md;
   padding: var(--space-y) var(--space-x);
   padding-inline-start: calc(
