@@ -11,7 +11,7 @@
 
 body {
   --wrapper-max-width: 1280px;
-  --gutter: 2rem;
+  --gutter: 1.5rem;
   font-family: 'Nunito Sans', system-ui, sans-serif;
   @apply font-light text-dark-shade bg-light;
   /* @apply dark:bg-dark dark:text-white; */

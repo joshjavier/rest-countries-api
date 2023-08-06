@@ -8,11 +8,11 @@ interface Props {
 
 const InfoLine = ({ title, text = 'None', children }: Props) => {
   return children ? (
-    <div>
+    <div className="[ infoline ] [ cluster ] [ items-center ]">
       <span>{title}:</span> {children}
     </div>
   ) : (
-    <p>
+    <p className="infoline">
       <span>{title}:</span> {text}
     </p>
   )

@@ -44,7 +44,7 @@ function App() {
   return (
     <>
       <Header title="Where in the world?" />
-      <main className="pb-12">
+      <main id="main" className="py-12">
         <div className="[ wrapper flow ]">
           <SearchBox callback={searchCountry} />
           <button className="button" onClick={handleClick}>

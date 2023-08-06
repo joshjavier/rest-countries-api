@@ -12,7 +12,9 @@ const Card = (props: Props) => {
       <div className="[ flag ] [ frame ]">
         <Flag png={props.country.flags.png} />
       </div>
-      <CountryInfo country={props.country} level="summary" className="text" />
+      <div className="text">
+        <CountryInfo country={props.country} level="summary" />
+      </div>
     </div>
   )
 }

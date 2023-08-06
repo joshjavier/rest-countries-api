@@ -8,11 +8,13 @@
 
 /* Blocks */
 @import 'blocks/button.css';
-@import 'blocks/country-info.css';
+/* @import 'blocks/country-info.css'; */
+@import 'blocks/infoline.css';
 @import 'blocks/icon.css';
 @import 'blocks/searchbox.css';
 @import 'blocks/card.css';
 @import 'blocks/site-header.css';
+@import 'blocks/country.css';
 
 /* Compositions */
 
