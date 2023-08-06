@@ -1,0 +1,29 @@
+.searchbox {
+  --space-x: 1.75em;
+  --space-y: 1em;
+  --icon-size: 1.25em;
+  --gap: 1em;
+  position: relative;
+}
+
+.searchbox > svg {
+  @apply text-light-shade;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: var(--space-x);
+  width: var(--icon-size);
+  height: var(--icon-size);
+}
+
+.searchbox > input {
+  @apply rounded-md;
+  padding: var(--space-y) var(--space-x);
+  padding-inline-start: calc(
+    var(--icon-size) + var(--space-x) + var(--gap, var(--space-y))
+  );
+  inline-size: 100%;
+  box-shadow:
+    0 0 15px -3px rgb(0 0 0 / 0.1),
+    0 4px 6px -4px rgb(0 0 0 / 0.1);
+}

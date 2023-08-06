@@ -9,6 +9,8 @@
 /* Blocks */
 @import 'blocks/button.css';
 @import 'blocks/country-info.css';
+@import 'blocks/icon.css';
+@import 'blocks/searchbox.css';
 
 /* Compositions */
 
@@ -16,5 +18,6 @@
 @import 'utilities/frame.css';
 @import 'utilities/wrapper.css';
 @import 'utilities/cluster.css';
+@import 'utilities/flow.css';
 
 @import 'tailwindcss/utilities';

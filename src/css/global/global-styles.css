@@ -1,5 +1,22 @@
+:root {
+  /* For reference only */
+  /* --dark-el: #2b3945; */
+  /* --dark-bg: hsl(209, 26%, 17%); */
+  /* --light-text: hsl(200, 15%, 8%); */
+  /* --light-input: #858585; */
+  /* --light-bg: #fafafa; */
+  /* --dark-text: #ffffff; */
+  /* --light-el: var(--dark-text); */
+}
+
 body {
   --wrapper-max-width: 1280px;
-  font-family: 'Nunito Sans', sans-serif;
-  font-weight: 300;
+  font-family: 'Nunito Sans', system-ui, sans-serif;
+  @apply font-light text-dark-shade bg-light;
+  /* @apply dark:bg-dark dark:text-white; */
+}
+
+input[type='search']::placeholder {
+  @apply text-light-shade;
+  /* @apply dark:text-white; */
 }

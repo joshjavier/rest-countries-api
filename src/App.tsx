@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import Card from './components/Card'
 import Header from './components/Header'
 import CountryInfo from './components/CountryInfo'
+import SearchBox from './components/SearchBox'
 
 import { Country } from './data/entities'
 import data from '../data.json'
@@ -31,6 +32,10 @@ function App() {
     setIndex(country)
   }
 
+  const searchCountry = (query: string) => {
+    console.log(query)
+  }
+
   useEffect(() => {
     const antarctica = countries.findIndex((c) => c.name === 'Antarctica')
     setIndex(antarctica)
@@ -39,14 +44,19 @@ function App() {
   return (
     <>
       <Header title="Where in the world?" />
-      <button onClick={handleClick}>🎲 Randomize</button>
-      <Card country={country} />
-      <CountryInfo
-        country={country}
-        countries={countries}
-        level="detail"
-        navToCountry={navToCountry}
-      />
+      <main>
+        <div className="wrapper">
+          <SearchBox callback={searchCountry} />
+          <button onClick={handleClick}>🎲 Randomize</button>
+          <Card country={country} />
+          <CountryInfo
+            country={country}
+            countries={countries}
+            level="detail"
+            navToCountry={navToCountry}
+          />
+        </div>
+      </main>
     </>
   )
 }
