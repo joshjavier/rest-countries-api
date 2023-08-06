@@ -1,9 +1,11 @@
 .searchbox {
-  --space-x: 1.75em;
-  --space-y: 1em;
-  --icon-size: 1.25em;
-  --gap: 1em;
+  --space-x: 1.875rem;
+  --space-y: 1.125rem;
+  --icon-size: 1.375rem;
+  --gap: 1.375rem;
   position: relative;
+  max-inline-size: 480px;
+  @apply text-sm;
 }
 
 .searchbox > svg {
