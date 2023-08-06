@@ -11,6 +11,7 @@
 
 body {
   --wrapper-max-width: 1280px;
+  --gutter: 2rem;
   font-family: 'Nunito Sans', system-ui, sans-serif;
   @apply font-light text-dark-shade bg-light;
   /* @apply dark:bg-dark dark:text-white; */
@@ -19,4 +20,11 @@ body {
 input[type='search']::placeholder {
   @apply text-light-shade;
   /* @apply dark:text-white; */
+}
+
+h1,
+h2,
+h3,
+h4 {
+  @apply font-extrabold;
 }
