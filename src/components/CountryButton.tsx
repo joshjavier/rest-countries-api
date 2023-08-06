@@ -11,10 +11,7 @@ const CountryButton = (props: Props) => {
   }
 
   return (
-    <button
-      className="[ button ] [ py-1 px-7 rounded active:shadow-inner ]"
-      onClick={handleClick}
-    >
+    <button className="[ button ] [ py-1 px-7 ]" onClick={handleClick}>
       {props.country.name}
     </button>
   )

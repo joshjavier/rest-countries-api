@@ -28,3 +28,11 @@ h3,
 h4 {
   @apply font-extrabold;
 }
+
+h1 {
+  @apply text-2xl tracking-tight leading-tight;
+}
+
+main {
+  --flow-space: 3rem;
+}

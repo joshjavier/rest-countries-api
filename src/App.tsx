@@ -44,10 +44,12 @@ function App() {
   return (
     <>
       <Header title="Where in the world?" />
-      <main>
-        <div className="wrapper">
+      <main className="pb-12">
+        <div className="[ wrapper flow ]">
           <SearchBox callback={searchCountry} />
-          <button onClick={handleClick}>🎲 Randomize</button>
+          <button className="button" onClick={handleClick}>
+            🎲 Randomize
+          </button>
           <Card country={country} />
           <CountryInfo
             country={country}
