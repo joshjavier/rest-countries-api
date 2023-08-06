@@ -1,35 +1,31 @@
-import { FormEvent, useState } from 'react'
+import { Form, useSubmit } from 'react-router-dom'
 import { ReactComponent as SearchIcon } from '../assets/search-outline.svg'
 
 interface Props {
-  callback: (query: string) => void
+  q: string | null
 }
 
-const SearchBox = (props: Props) => {
-  const [query, setQuery] = useState<string>('')
-
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault()
-    props.callback(query)
-  }
+const SearchBox = ({ q }: Props) => {
+  const submit = useSubmit()
 
   return (
-    <form role="search" onSubmit={handleSubmit} className="searchbox">
+    <Form role="search" className="searchbox">
       <label>
         <SearchIcon className="icon icon-stroke" aria-hidden="true" />
         <input
           type="search"
-          id="search"
+          id="q"
           name="q"
-          value={query}
-          onChange={({ target }) =>
-            setQuery((target as HTMLInputElement).value)
-          }
+          defaultValue={q || ''}
+          onChange={(e) => {
+            const isFirstSearch = q === null
+            submit(e.currentTarget.form, { replace: !isFirstSearch })
+          }}
           aria-label="Search for a country"
           placeholder="Search for a country…"
         />
       </label>
-    </form>
+    </Form>
   )
 }
 

@@ -1,3 +1,4 @@
+import { getCountry } from '../countries'
 import { Country } from '../data/entities'
 import CountryButton from './CountryButton'
 import InfoLine from './InfoLine'
@@ -5,7 +6,6 @@ import InfoLine from './InfoLine'
 interface Props {
   country: Country
   level: 'summary' | 'detail'
-  countries?: Country[]
   navToCountry?: (code: string) => void
 }
 
@@ -51,7 +51,7 @@ const CountryInfo = (props: Props) => {
         <InfoLine title="Border Countries">
           <ul className="cluster">
             {borders
-              .map((b) => props.countries!.find((c) => c.alpha3Code === b)!)
+              .map((b) => getCountry(b))
               .map((c) => (
                 <li key={c.alpha3Code}>
                   <CountryButton country={c} callback={props.navToCountry} />

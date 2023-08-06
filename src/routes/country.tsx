@@ -1,19 +1,20 @@
-import { Link, useLoaderData, useNavigate } from 'react-router-dom'
-import { getCountry, getCountries } from '../countries'
+import { useLoaderData, useNavigate } from 'react-router-dom'
+import { getCountry } from '../countries'
 
 import Flag from '../components/Flag'
 import CountryInfo from '../components/CountryInfo'
 import { ReactComponent as BackIcon } from '../assets/arrow-back-outline.svg'
+import type { Country } from '../data/entities'
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const loader = ({ params }) => {
-  const countries = getCountries()
   const country = getCountry(params.countryCode)
-  return { country, countries }
+  return { country }
 }
 
 const Country = () => {
   const navigate = useNavigate()
-  const { country, countries } = useLoaderData()
+  const { country } = useLoaderData() as { country: Country }
 
   return (
     <>
@@ -28,7 +29,7 @@ const Country = () => {
           <Flag png={country.flags.png} />
         </div>
         <div className="[ content ] [ flow ]">
-          <CountryInfo country={country} level="detail" countries={countries} />
+          <CountryInfo country={country} level="detail" />
         </div>
       </div>
     </>

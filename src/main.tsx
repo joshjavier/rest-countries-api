@@ -5,6 +5,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Root from './routes/root.tsx'
 import ErrorPage from './error-page.tsx'
 import Country, { loader as countryLoader } from './routes/country.tsx'
+import Index, { loader as countriesLoader } from './routes/index.tsx'
 
 import App from './App.tsx'
 import './css/main.css'
@@ -15,6 +16,11 @@ const router = createBrowserRouter([
     element: <Root />,
     errorElement: <ErrorPage />,
     children: [
+      {
+        index: true,
+        element: <Index />,
+        loader: countriesLoader,
+      },
       {
         path: 'country/:countryCode',
         element: <Country />,
