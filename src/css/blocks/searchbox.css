@@ -20,6 +20,7 @@
 
 .searchbox input {
   @apply rounded-md;
+  letter-spacing: calc(0.14 / 16 * 1rem);
   padding: var(--space-y) var(--space-x);
   padding-inline-start: calc(
     var(--icon-size) + var(--space-x) + var(--gap, var(--space-y))
