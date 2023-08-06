@@ -1,4 +1,4 @@
-import { Link, useLoaderData } from 'react-router-dom'
+import { Link, useLoaderData, useNavigate } from 'react-router-dom'
 import { getCountry, getCountries } from '../countries'
 
 import Flag from '../components/Flag'
@@ -12,15 +12,16 @@ export const loader = ({ params }) => {
 }
 
 const Country = () => {
+  const navigate = useNavigate()
   const { country, countries } = useLoaderData()
 
   return (
     <>
       <nav className="navigation">
-        <Link to="/" className="[ button ] [ px-8 ]">
+        <button className="[ button ] [ px-8 ]" onClick={() => navigate(-1)}>
           <BackIcon className="icon icon-stroke" />
           Back
-        </Link>
+        </button>
       </nav>
       <div className="country">
         <div className="flag">

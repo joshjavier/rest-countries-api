@@ -1,7 +1,8 @@
-import { Link, useRouteError } from 'react-router-dom'
+import { Link, useRouteError, useNavigate } from 'react-router-dom'
 import { ReactComponent as BackIcon } from './assets/arrow-back-outline.svg'
 
 const ErrorPage = () => {
+  const navigate = useNavigate()
   const error = useRouteError()
   console.error(error)
 
@@ -17,10 +18,13 @@ const ErrorPage = () => {
           (error as Error).message}
       </p>
       <div className="[ navigation ] [ flex flex-wrap items-center justify-center gap-4 mt-12 font-semibold ]">
-        <Link to=".." className="[ button ] [ px-8 shadow-lg ]">
+        <button
+          className="[ button ] [ px-8 shadow-lg ]"
+          onClick={() => navigate(-1)}
+        >
           <BackIcon className="icon icon-stroke" />
           Back
-        </Link>
+        </button>
         <Link to="/" className="[ button ] [ text-sky-600 px-8 shadow-lg ]">
           Go to homepage
         </Link>
