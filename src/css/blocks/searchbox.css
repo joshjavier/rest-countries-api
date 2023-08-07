@@ -6,11 +6,11 @@
   position: relative;
   max-inline-size: 480px;
   flex-grow: 1;
-  @apply text-sm;
+  @apply text-sm dark:text-white;
 }
 
 .searchbox svg {
-  @apply text-light-shade;
+  @apply text-inherit;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -20,7 +20,7 @@
 }
 
 .searchbox input {
-  @apply rounded-md;
+  @apply rounded-md dark:bg-dark-tint;
   letter-spacing: calc(0.14 / 16 * 1rem);
   padding: var(--space-y) var(--space-x);
   padding-inline-start: calc(

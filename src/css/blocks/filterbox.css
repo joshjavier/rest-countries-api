@@ -6,7 +6,7 @@
 }
 
 .filterbox select {
-  @apply text-sm bg-white rounded-md;
+  @apply text-sm bg-white rounded-md dark:bg-dark-tint;
   padding: var(--space-y) var(--space-x);
   box-shadow:
     0 0 15px -3px rgb(0 0 0 / 0.1),

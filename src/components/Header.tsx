@@ -6,7 +6,7 @@ interface Props {
 
 const Header = (props: Props) => {
   return (
-    <header className="[ site-header ] [ bg-white shadow ]">
+    <header className="site-header">
       <div className="[ wrapper py-6 ]">
         <h1>
           <Link to="/">{props.title}</Link>

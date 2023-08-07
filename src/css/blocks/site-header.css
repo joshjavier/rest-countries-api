@@ -1,2 +1,3 @@
 .site-header {
+  @apply bg-white shadow dark:bg-dark-tint;
 }

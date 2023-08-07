@@ -13,13 +13,11 @@ body {
   --wrapper-max-width: 1280px;
   --gutter: calc(24 / 16 * 1rem + (80 - 24) * var(--fluid-bp));
   font-family: 'Nunito Sans', system-ui, sans-serif;
-  @apply font-light text-dark-shade bg-light;
-  /* @apply dark:bg-dark dark:text-white; */
+  @apply font-light text-dark-shade bg-light dark:bg-dark dark:text-white;
 }
 
 input[type='search']::placeholder {
-  @apply text-light-shade;
-  /* @apply dark:text-white; */
+  @apply text-light-shade dark:text-inherit;
 }
 
 h1,
@@ -35,4 +33,5 @@ h1 {
 
 main {
   --flow-space: 3rem;
+  @apply pt-12 pb-28;
 }
