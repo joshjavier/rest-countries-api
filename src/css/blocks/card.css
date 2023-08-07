@@ -34,7 +34,8 @@
 /* Hover/focus styles */
 
 .card:hover {
-  box-shadow: 0 0 0 0.25rem;
+  outline: 0.25rem solid orange;
+  outline-offset: 2px;
 }
 
 .card a:focus {
@@ -42,7 +43,8 @@
 }
 
 .card:focus-within {
-  box-shadow: 0 0 0 0.25rem;
+  outline: 0.25rem solid orange;
+  outline-offset: 2px;
   transform: scale(1.05);
 }
 

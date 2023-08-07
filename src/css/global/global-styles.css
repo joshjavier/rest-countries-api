@@ -35,3 +35,8 @@ main {
   --flow-space: 3rem;
   @apply pt-12 pb-28;
 }
+
+:focus-visible {
+  outline-offset: 2px;
+  outline: 0.25rem solid orange;
+}
