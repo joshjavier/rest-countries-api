@@ -1,0 +1,25 @@
+.filterbox {
+  --space-x: calc(24 / 16 * 1rem);
+  --space-y: calc(18 / 16 * 1rem);
+  position: relative;
+  width: 200px;
+}
+
+.filterbox select {
+  @apply text-sm bg-white rounded-md;
+  padding: var(--space-y) var(--space-x);
+  box-shadow:
+    0 0 15px -3px rgb(0 0 0 / 0.1),
+    0 4px 6px -4px rgb(0 0 0 / 0.1);
+  appearance: none;
+  inline-size: 100%;
+}
+
+.filterbox svg {
+  position: absolute;
+  right: var(--space-x);
+  top: 50%;
+  transform: translateY(-50%);
+  stroke-width: 1;
+  pointer-events: none;
+}

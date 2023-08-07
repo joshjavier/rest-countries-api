@@ -33,7 +33,7 @@ const Index = () => {
 
   return (
     <>
-      <Form role="search">
+      <Form role="search" className="flex flex-wrap gap-8 justify-between">
         <SearchBox q={q} />
         <FilterBox options={regions} selected={r} />
       </Form>

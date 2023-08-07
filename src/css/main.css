@@ -16,6 +16,7 @@
 @import 'blocks/site-header.css';
 @import 'blocks/country.css';
 /* @import 'blocks/loader.css'; */
+@import 'blocks/filterbox.css';
 
 /* Compositions */
 @import 'compositions/card-grid.css';
