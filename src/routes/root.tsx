@@ -4,7 +4,14 @@ import Header from '../components/Header'
 const Root = () => {
   return (
     <>
-      <ScrollRestoration />
+      <ScrollRestoration
+        getKey={(location) => {
+          const paths = ['/']
+          return paths.includes(location.pathname)
+            ? location.pathname
+            : location.key
+        }}
+      />
       <Header title="Where in the world?" />
       <main id="main">
         <div className="[ wrapper flow ]">
