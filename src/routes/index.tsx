@@ -37,13 +37,21 @@ const Index = () => {
         <SearchBox q={q} />
         <FilterBox options={regions} selected={r} />
       </Form>
-      <ul className="card-grid">
-        {countries.map((country) => (
-          <li key={country.alpha3Code}>
-            <Card country={country} />
-          </li>
-        ))}
-      </ul>
+
+      {countries.length ? (
+        <>
+          <h2 className="sr-only">Countries</h2>
+          <ul className="card-grid">
+            {countries.map((country) => (
+              <li key={country.alpha3Code}>
+                <Card country={country} />
+              </li>
+            ))}
+          </ul>
+        </>
+      ) : (
+        <p>Your search doesn't match any country.</p>
+      )}
     </>
   )
 }
