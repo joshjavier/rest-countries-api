@@ -1,14 +1,3 @@
-:root {
-  /* For reference only */
-  /* --dark-el: #2b3945; */
-  /* --dark-bg: hsl(209, 26%, 17%); */
-  /* --light-text: hsl(200, 15%, 8%); */
-  /* --light-input: #858585; */
-  /* --light-bg: #fafafa; */
-  /* --dark-text: #ffffff; */
-  /* --light-el: var(--dark-text); */
-}
-
 body {
   --wrapper-max-width: 1280px;
   --gutter: calc(24 / 16 * 1rem + (80 - 24) * var(--fluid-bp));
