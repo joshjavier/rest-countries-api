@@ -9,14 +9,26 @@
   @apply text-sm dark:text-white;
 }
 
-.searchbox svg {
+.searchbox > :first-child,
+.searchbox > :last-child {
   @apply text-inherit;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  left: var(--space-x);
   width: var(--icon-size);
   height: var(--icon-size);
+}
+
+.searchbox > :first-child {
+  left: var(--space-x);
+}
+
+.searchbox > :last-child {
+  right: var(--space-x);
+}
+
+.searchbox > :last-child svg {
+  transform: translateY(-1px); /* optical adjustment */
 }
 
 .searchbox input {
@@ -30,4 +42,5 @@
   box-shadow:
     0 0 15px -3px rgb(0 0 0 / 0.1),
     0 4px 6px -4px rgb(0 0 0 / 0.1);
+  padding-inline-end: calc(var(--icon-size) + var(--space-x) + 0.5rem);
 }

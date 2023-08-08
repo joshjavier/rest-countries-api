@@ -1,5 +1,7 @@
 import { useSubmit } from 'react-router-dom'
+import { useRef } from 'react'
 import { ReactComponent as SearchIcon } from '../assets/search-outline.svg'
+import { ReactComponent as ClearIcon } from '../assets/close-outline.svg'
 
 interface Props {
   q: string | null
@@ -7,6 +9,7 @@ interface Props {
 
 const SearchBox = ({ q }: Props) => {
   const submit = useSubmit()
+  const ref = useRef<HTMLInputElement>(null)
 
   return (
     <label className="searchbox">
@@ -22,7 +25,15 @@ const SearchBox = ({ q }: Props) => {
         }}
         aria-label="Search for a country"
         placeholder="Search for a country…"
+        ref={ref}
       />
+      <button
+        aria-label="Clear search query"
+        onClick={() => (ref.current!.value = '')}
+        hidden={!q}
+      >
+        <ClearIcon className="icon icon-stroke" aria-hidden="true" />
+      </button>
     </label>
   )
 }
