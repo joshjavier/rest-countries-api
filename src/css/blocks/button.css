@@ -7,12 +7,25 @@
   transition: box-shadow 120ms ease-out;
 }
 
-.button:hover {
+.button > :first-child {
+  flex-shrink: 0;
+}
+
+.button:not(.no-padding):hover {
   box-shadow:
     0 0 15px -3px rgb(0 0 0 / 0.4),
     0 4px 6px -4px rgb(0 0 0 / 0.1);
 }
 
-.button:active {
+.button:not(.no-padding):active {
   @apply shadow-inner;
+}
+
+.button.no-padding {
+  padding: 0;
+  box-shadow: none;
+}
+
+.button.no-padding:hover {
+  text-decoration: underline;
 }
