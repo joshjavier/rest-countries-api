@@ -1,5 +1,5 @@
 .button {
-  @apply rounded inline-flex items-center gap-2.5 dark:bg-dark-tint;
+  @apply rounded inline-flex items-center text-center gap-2.5 dark:bg-dark-tint;
   padding: 0.5em 1.75em;
   box-shadow:
     0 0 6px -1px rgb(0 0 0 / 0.5),
