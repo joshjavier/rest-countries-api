@@ -6,7 +6,7 @@
   position: relative;
   max-inline-size: 480px;
   flex-grow: 1;
-  @apply text-sm dark:text-white;
+  @apply text-sm;
 }
 
 .searchbox > :first-child,
@@ -32,15 +32,9 @@
 }
 
 .searchbox input {
-  @apply rounded-md dark:bg-dark-tint;
   letter-spacing: calc(0.14 / 16 * 1rem);
-  padding: var(--space-y) var(--space-x);
   padding-inline-start: calc(
     var(--icon-size) + var(--space-x) + var(--gap, var(--space-y))
   );
-  inline-size: 100%;
-  box-shadow:
-    0 0 15px -3px rgb(0 0 0 / 0.1),
-    0 4px 6px -4px rgb(0 0 0 / 0.1);
   padding-inline-end: calc(var(--icon-size) + var(--space-x) + 0.5rem);
 }

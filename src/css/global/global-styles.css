@@ -16,7 +16,22 @@ body {
   @apply font-light text-dark-shade bg-light dark:bg-dark dark:text-white;
 }
 
-input[type='search']::placeholder {
+input,
+select {
+  @apply rounded-md bg-white dark:bg-dark-tint;
+  padding: var(--space-y, 1.125rem) var(--space-x, 1.5rem);
+  inline-size: 100%;
+  appearance: none;
+  box-shadow:
+    0 0 15px -3px rgb(0 0 0 / 0.1),
+    0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+input[type='search'] {
+  -webkit-appearance: none;
+}
+
+input::placeholder {
   @apply text-light-shade dark:text-inherit;
 }
 
