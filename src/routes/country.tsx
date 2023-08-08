@@ -1,4 +1,8 @@
-import { useLoaderData, useNavigate } from 'react-router-dom'
+import {
+  LoaderFunctionArgs,
+  useLoaderData,
+  useNavigate,
+} from 'react-router-dom'
 import { getCountry } from '../countries'
 
 import Flag from '../components/Flag'
@@ -7,8 +11,8 @@ import { ReactComponent as BackIcon } from '../assets/arrow-back-outline.svg'
 import type { Country } from '../data/entities'
 
 // eslint-disable-next-line react-refresh/only-export-components
-export const loader = ({ params }) => {
-  const country = getCountry(params.countryCode)
+export const loader = ({ params }: LoaderFunctionArgs) => {
+  const country = getCountry(params.countryCode!)
   return { country }
 }
 

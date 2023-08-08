@@ -1,4 +1,4 @@
-import { Form, useLoaderData } from 'react-router-dom'
+import { Form, LoaderFunctionArgs, useLoaderData } from 'react-router-dom'
 import { useEffect } from 'react'
 import { getCountries, getRegions } from '../countries'
 import { Country } from '../data/entities'
@@ -7,7 +7,7 @@ import Card from '../components/Card'
 import FilterBox from '../components/FilterBox'
 
 // eslint-disable-next-line react-refresh/only-export-components
-export const loader = ({ request }: { request: { url: string } }) => {
+export const loader = ({ request }: LoaderFunctionArgs) => {
   const url = new URL(request.url)
   const q = url.searchParams.get('q')
   const r = url.searchParams.get('region')
