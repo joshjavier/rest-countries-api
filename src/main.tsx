@@ -7,7 +7,6 @@ import ErrorPage from './error-page.tsx'
 import Country, { loader as countryLoader } from './routes/country.tsx'
 import Index, { loader as countriesLoader } from './routes/index.tsx'
 
-import App from './App.tsx'
 import './css/main.css'
 
 const router = createBrowserRouter([
@@ -32,7 +31,6 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    {/* <App /> */}
     <RouterProvider router={router} />
   </React.StrictMode>,
 )

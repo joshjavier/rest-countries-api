@@ -8,7 +8,6 @@ import InfoLine from './InfoLine'
 interface Props {
   country: Country
   level: 'summary' | 'detail'
-  navToCountry?: (code: string) => void
 }
 
 export type Ref = HTMLAnchorElement
@@ -59,7 +58,7 @@ const CountryInfo = forwardRef<Ref, Props>((props, ref) => {
               .map((b) => getCountry(b))
               .map((c) => (
                 <li key={c.alpha3Code}>
-                  <CountryButton country={c} callback={props.navToCountry} />
+                  <CountryButton country={c} />
                 </li>
               ))}
           </ul>
