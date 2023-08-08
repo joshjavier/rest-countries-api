@@ -1,9 +1,10 @@
-import { Outlet } from 'react-router-dom'
+import { Outlet, ScrollRestoration } from 'react-router-dom'
 import Header from '../components/Header'
 
 const Root = () => {
   return (
     <>
+      <ScrollRestoration />
       <Header title="Where in the world?" />
       <main id="main">
         <div className="[ wrapper flow ]">
