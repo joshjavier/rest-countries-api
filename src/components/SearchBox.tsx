@@ -1,5 +1,6 @@
 import { useSubmit } from 'react-router-dom'
-import { useRef } from 'react'
+import { ChangeEvent, useRef } from 'react'
+import debounce from 'lodash/debounce'
 import { ReactComponent as SearchIcon } from '../assets/search-outline.svg'
 import { ReactComponent as ClearIcon } from '../assets/close-outline.svg'
 
@@ -11,6 +12,15 @@ const SearchBox = ({ q }: Props) => {
   const submit = useSubmit()
   const ref = useRef<HTMLInputElement>(null)
 
+  const debouncedSubmit = debounce((form, replace) => {
+    submit(form, { replace })
+  }, 500)
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const isFirstSearch = q === null
+    debouncedSubmit(e.currentTarget.form, !isFirstSearch)
+  }
+
   return (
     <label className="searchbox">
       <SearchIcon className="icon icon-stroke" aria-hidden="true" />
@@ -19,10 +29,7 @@ const SearchBox = ({ q }: Props) => {
         id="q"
         name="q"
         defaultValue={q || ''}
-        onChange={(e) => {
-          const isFirstSearch = q === null
-          submit(e.currentTarget.form, { replace: !isFirstSearch })
-        }}
+        onChange={handleChange}
         aria-label="Search for a country"
         placeholder="Search for a country…"
         ref={ref}
