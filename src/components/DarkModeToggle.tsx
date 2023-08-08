@@ -32,7 +32,7 @@ const DarkModeToggle = () => {
         aria-hidden="true"
         style={{ fill: active ? 'currentColor' : 'none' }}
       />
-      Dark Mode
+      <span className="sr-only sm:not-sr-only">Dark Mode</span>
     </button>
   )
 }
