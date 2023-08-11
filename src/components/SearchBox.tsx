@@ -37,7 +37,6 @@ const SearchBox = ({ q }: Props) => {
       <button
         aria-label="Clear search query"
         onClick={() => (ref.current!.value = '')}
-        hidden={!q}
       >
         <ClearIcon className="icon icon-stroke" aria-hidden="true" />
       </button>

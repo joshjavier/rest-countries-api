@@ -38,3 +38,7 @@
   );
   padding-inline-end: calc(var(--icon-size) + var(--space-x) + 0.5rem);
 }
+
+.searchbox input:placeholder-shown + button {
+  visibility: hidden;
+}
