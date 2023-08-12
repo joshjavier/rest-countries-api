@@ -8,7 +8,7 @@ interface Props {
 const CountryButton = (props: Props) => {
   return (
     <Link
-      to={`../country/${props.country.alpha3Code}`}
+      to={`../country/${props.country.code}`}
       className="[ button ] [ py-1 px-7 ]"
     >
       {props.country.name}

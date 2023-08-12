@@ -8,7 +8,7 @@ import { getCountry } from '../countries'
 import Flag from '../components/Flag'
 import CountryInfo from '../components/CountryInfo'
 import { ReactComponent as BackIcon } from '../assets/arrow-back-outline.svg'
-import type { Country } from '../data/entities'
+import { Country } from '../data/entities'
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const loader = ({ params }: LoaderFunctionArgs) => {
@@ -16,7 +16,7 @@ export const loader = ({ params }: LoaderFunctionArgs) => {
   return { country }
 }
 
-const Country = () => {
+const CountryPage = () => {
   const navigate = useNavigate()
   const { country } = useLoaderData() as { country: Country }
 
@@ -30,7 +30,7 @@ const Country = () => {
       </nav>
       <div className="country">
         <div className="flag">
-          <Flag png={country.flags.png} />
+          <Flag png={country.flag.png} />
         </div>
         <div className="[ content ] [ flow ]">
           <CountryInfo country={country} level="detail" />
@@ -40,4 +40,4 @@ const Country = () => {
   )
 }
 
-export default Country
+export default CountryPage

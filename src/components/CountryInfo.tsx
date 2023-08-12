@@ -15,22 +15,17 @@ export type Ref = HTMLAnchorElement
 const CountryInfo = forwardRef<Ref, Props>((props, ref) => {
   const {
     name,
-    alpha3Code,
+    code,
     nativeName,
     population,
     region,
     subregion,
     capital,
-    topLevelDomain,
+    tld,
     currencies,
     languages,
     borders,
   } = props.country
-
-  const pop = population.toLocaleString('en-US')
-  const tld = topLevelDomain.join(', ')
-  const curr = currencies?.map((c) => c.name).join(', ')
-  const lang = languages.map((l) => l.name).join(', ')
 
   return props.level === 'detail' ? (
     <>
@@ -39,25 +34,25 @@ const CountryInfo = forwardRef<Ref, Props>((props, ref) => {
       <div className="flex flex-wrap gap-8 justify-between">
         <div className="[ infolines ] [ flow ]">
           <InfoLine title="Native Name" text={nativeName} />
-          <InfoLine title="Population" text={pop} />
+          <InfoLine title="Population" text={population} />
           <InfoLine title="Region" text={region} />
           <InfoLine title="Sub Region" text={subregion} />
           <InfoLine title="Capital" text={capital} />
         </div>
         <div className="[ infolines ] [ flow ]">
           <InfoLine title="Top Level Domain" text={tld} />
-          <InfoLine title="Currencies" text={curr} />
-          <InfoLine title="Languages" text={lang} />
+          <InfoLine title="Currencies" text={currencies} />
+          <InfoLine title="Languages" text={languages} />
         </div>
       </div>
 
-      {borders && (
+      {borders?.[0] && (
         <InfoLine title="Border Countries">
           <ul className="cluster">
             {borders
               .map((b) => getCountry(b))
               .map((c) => (
-                <li key={c.alpha3Code}>
+                <li key={c.code}>
                   <CountryButton country={c} />
                 </li>
               ))}
@@ -68,12 +63,12 @@ const CountryInfo = forwardRef<Ref, Props>((props, ref) => {
   ) : (
     <>
       <h3>
-        <Link to={`country/${alpha3Code}`} ref={ref}>
+        <Link to={`country/${code}`} ref={ref}>
           {name}
         </Link>
       </h3>
       <div className="[ infolines ] [ flow ]">
-        <InfoLine title="Population" text={pop} />
+        <InfoLine title="Population" text={population} />
         <InfoLine title="Region" text={region} />
         <InfoLine title="Capital" text={capital} />
       </div>

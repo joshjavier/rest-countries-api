@@ -1,7 +1,7 @@
 import data from '../data.json'
 import { Country } from './data/entities'
 
-const countries = data.countries as Country[]
+const countries = data.countries.map((c) => new Country(c))
 const countryCodes = ['DEU', 'USA', 'BRA', 'ISL', 'AFG', 'ALA', 'ALB', 'DZA']
 const initialCountries = countryCodes.map((code) => getCountry(code))
 
@@ -25,7 +25,7 @@ function getCountries(query: string | null, region: string | null): Country[] {
 }
 
 function getCountry(code: string): Country {
-  return countries.find((c) => c.alpha3Code === code)!
+  return countries.find((c) => c.code === code)!
 }
 
 function getRegions(): Set<string> {
