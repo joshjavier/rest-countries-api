@@ -1,0 +1,11 @@
+/* Base */
+@import 'base/reset.css';
+@import 'base/fonts.css';
+@import 'base/root.css';
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  background-color: var(--color-sheet);
+  color: var(--color-text);
+}

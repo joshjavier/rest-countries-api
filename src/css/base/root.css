@@ -1,0 +1,18 @@
+:root {
+  /* Colors */
+  --color-dark-blue: hsl(209, 23%, 22%);
+  --color-very-dark-blue-a: hsl(207, 26%, 17%);
+  --color-very-dark-blue-b: hsl(200, 15%, 8%);
+  --color-dark-gray: hsl(0, 0%, 52%);
+  --color-very-light-gray: hsl(0, 0%, 98%);
+
+  --color-sheet: var(--color-very-light-gray);
+  --color-text: var(--color-very-dark-blue-b);
+
+  @media (prefers-color-scheme: dark) {
+    --color-sheet: var(--color-very-dark-blue-a);
+    --color-text: #fff;
+  }
+
+  --font-sans: 'Nunito Sans', ui-rounded, 'Hiragino Maru Gothic ProN', Quicksand, Comfortaa, Manjari, 'Arial Rounded MT', 'Arial Rounded MT Bold', Calibri, source-sans-pro, sans-serif;
+}
