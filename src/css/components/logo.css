@@ -1,0 +1,9 @@
+.logo {
+  font-size: var(--fluid-14-24);
+  font-weight: 800;
+  line-height: normal;
+
+  & a {
+    text-decoration: none;
+  }
+}

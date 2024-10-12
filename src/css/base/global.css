@@ -1,0 +1,12 @@
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  background-color: var(--color-sheet);
+  color: var(--color-text);
+  --wrapper-max-width: 1280px;
+}
+
+button {
+  border: 1px solid transparent;
+  cursor: pointer;
+}

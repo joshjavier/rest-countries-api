@@ -14,5 +14,14 @@
     --color-text: #fff;
   }
 
+  /* Typography */
   --font-sans: 'Nunito Sans', ui-rounded, 'Hiragino Maru Gothic ProN', Quicksand, Comfortaa, Manjari, 'Arial Rounded MT', 'Arial Rounded MT Bold', Calibri, source-sans-pro, sans-serif;
+
+  /* Custom fluid tokens */
+  /* @link https://utopia.fyi/clamp/calculator?a=375,768,14—24 */
+  --fluid-14-24: clamp(0.875rem, 0.2786rem + 2.5445vw, 1.5rem);
+  /* @link https://utopia.fyi/clamp/calculator?a=375,768,16—20 */
+  --fluid-16-20: clamp(1rem, 0.7615rem + 1.0178vw, 1.25rem);
+  /* @link https://utopia.fyi/clamp/calculator?a=375,768,12—16 */
+  --fluid-12-16: clamp(0.75rem, 0.5115rem + 1.0178vw, 1rem);
 }

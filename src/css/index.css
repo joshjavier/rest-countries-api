@@ -2,10 +2,13 @@
 @import 'base/reset.css';
 @import 'base/fonts.css';
 @import 'base/root.css';
+@import 'base/global.css';
 
-body {
-  margin: 0;
-  font-family: var(--font-sans);
-  background-color: var(--color-sheet);
-  color: var(--color-text);
-}
+/* Components */
+@import 'components/header.css';
+@import 'components/icon.css';
+@import 'components/logo.css';
+@import 'components/theme-switch.css';
+
+/* Utilities */
+@import 'utilities/center.css';

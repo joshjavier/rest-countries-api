@@ -1,0 +1,16 @@
+header {
+  background-color: #fff;
+  height: 80px;
+
+  & .wrapper {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    background-color: var(--color-dark-blue);
+  }
+}
