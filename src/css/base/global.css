@@ -1,6 +1,7 @@
 body {
   margin: 0;
   font-family: var(--font-sans);
+  font-weight: 300;
   background-color: var(--color-sheet);
   color: var(--color-text);
   --wrapper-max-width: 1280px;
@@ -9,4 +10,8 @@ body {
 button {
   border: 1px solid transparent;
   cursor: pointer;
+}
+
+main {
+  margin-top: var(--fluid-24-48);
 }

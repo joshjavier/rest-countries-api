@@ -8,7 +8,9 @@
 @import 'components/header.css';
 @import 'components/icon.css';
 @import 'components/logo.css';
+@import 'components/search-bar.css';
 @import 'components/theme-switch.css';
 
 /* Utilities */
 @import 'utilities/center.css';
+@import 'utilities/visually-hidden.css';

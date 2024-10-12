@@ -10,7 +10,7 @@ export function ThemeSwitch() {
 
   return (
     <button className="theme-switch" aria-pressed={isActive} onClick={toggle}>
-      <MoonIcon className="icon icon-moon" />
+      <MoonIcon className="icon icon-moon" aria-hidden="true" />
       Dark Mode
     </button>
   )
