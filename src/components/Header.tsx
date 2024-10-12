@@ -1,14 +1,14 @@
-import { ThemeSwitch } from "./ThemeSwitch";
+import { ThemeSwitch } from './ThemeSwitch'
 
 export function Header() {
   return (
     <header>
       <div className="wrapper center">
-          <div className="logo">
-            <a href="/">Where in the world?</a>
-          </div>
+        <div className="logo">
+          <a href="/">Where in the world?</a>
+        </div>
 
-          <ThemeSwitch />
+        <ThemeSwitch />
       </div>
     </header>
   )

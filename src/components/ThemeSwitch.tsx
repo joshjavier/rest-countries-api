@@ -9,8 +9,8 @@ export function ThemeSwitch() {
   }
 
   return (
-    <button className='theme-switch' aria-pressed={isActive} onClick={toggle}>
-      <MoonIcon className='icon icon-moon' />
+    <button className="theme-switch" aria-pressed={isActive} onClick={toggle}>
+      <MoonIcon className="icon icon-moon" />
       Dark Mode
     </button>
   )
