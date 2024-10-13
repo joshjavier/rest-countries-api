@@ -4,6 +4,7 @@
   font-size: var(--fluid-12-14);
   user-select: none;
   --color-bg: #fff;
+  --shadow: 0 2px 9px rgb(0 0 0 / 5.32%);
 
   & .toggle-button {
     display: flex;
@@ -14,6 +15,7 @@
     cursor: pointer;
     border-radius: 5px;
     background-color: var(--color-bg);
+    box-shadow: var(--shadow);
 
     &[aria-expanded="false"] .icon-expand {
       transform: rotateZ(180deg);
@@ -36,6 +38,7 @@
     background-color: var(--color-bg);
     list-style: none;
     position: relative;
+    box-shadow: var(--shadow);
 
     > * {
       padding: 4px 24px;

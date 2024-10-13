@@ -4,6 +4,7 @@
   border-radius: 5px;
   max-width: 320px;
   width: 100%;
+  box-shadow: 0 0 7px 2px rgb(0 0 0 / 2.94%);
 
   & .flag {
     /* height: 160px; */
