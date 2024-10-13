@@ -1,7 +1,4 @@
-import { Header } from './components/Header'
-import { Select } from './components/Select'
-import { SearchBar } from './components/SearchBar'
-import { Card } from './components/Card'
+import { Card, Header, SearchBar, Select } from './components'
 
 const regions = [
   { value: 'africa', label: 'Africa' },
