@@ -1,36 +1,15 @@
-import { Card, Header, SearchBar, Select } from './components'
-
-const regions = [
-  { value: 'africa', label: 'Africa' },
-  { value: 'america', label: 'America' },
-  { value: 'asia', label: 'Asia' },
-  { value: 'europe', label: 'Europe' },
-  { value: 'oceania', label: 'Oceania' },
-]
-
-const germany = {
-  name: 'Germany',
-  population: 81770900,
-  region: 'Europe',
-  capital: 'Berlin',
-  flag: 'https://flagcdn.com/w320/de.png',
-}
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { Root, Home, Country } from './routes'
 
 export function App() {
   return (
-    <>
-      <Header />
-      <main>
-        <div className="filters cluster center">
-          <SearchBar />
-          <Select options={regions} />
-        </div>
-
-        <div className="country-grid center">
-          <Card country={germany} />
-          <Card country={germany} />
-        </div>
-      </main>
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Root />}>
+          <Route index element={<Home />} />
+          <Route path="country" element={<Country />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   )
 }
