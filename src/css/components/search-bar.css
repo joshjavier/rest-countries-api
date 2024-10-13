@@ -1,5 +1,6 @@
 .search-bar {
   max-width: 480px;
+  width: 100%;
   height: var(--fluid-48-56);
   position: relative;
   --input-bg: #fff;

@@ -14,4 +14,8 @@ button {
 
 main {
   margin-top: var(--fluid-24-48);
+
+  .filters {
+    --space: 40px;
+  }
 }
