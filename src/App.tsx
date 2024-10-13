@@ -1,6 +1,7 @@
 import { Header } from './components/Header'
 import { Select } from './components/Select'
 import { SearchBar } from './components/SearchBar'
+import { Card } from './components/Card'
 
 const regions = [
   { value: 'africa', label: 'Africa' },
@@ -10,18 +11,27 @@ const regions = [
   { value: 'oceania', label: 'Oceania' },
 ]
 
+const germany = {
+  name: 'Germany',
+  population: 81770900,
+  region: 'Europe',
+  capital: 'Berlin',
+  flag: 'https://flagcdn.com/w320/de.png',
+}
+
 export function App() {
   return (
     <>
       <Header />
-      <main className="center">
-        <div className="filters cluster">
+      <main>
+        <div className="filters cluster center">
           <SearchBar />
           <Select options={regions} />
         </div>
 
-        <div className="country-grid">
-          Country cards here
+        <div className="country-grid center">
+          <Card country={germany} />
+          <Card country={germany} />
         </div>
       </main>
     </>

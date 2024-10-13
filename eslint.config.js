@@ -30,7 +30,7 @@ export default tseslint.config(
         allowTemplateLiterals: true,
         avoidEscape: true,
       }],
-      '@stylistic/jsx-one-expression-per-line': ['error', { allow: 'non-jsx' }],
+      '@stylistic/jsx-one-expression-per-line': ['error', { allow: 'single-line' }],
     },
   },
 )
