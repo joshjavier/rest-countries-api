@@ -1,0 +1,74 @@
+.country {
+  padding-bottom: 60px;
+  --wrapper-gutter: 28px;
+
+  & :where(strong, h2) {
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 0;
+  }
+
+  & .back-link {
+    margin-top: var(--fluid-40-80);
+
+    > .icon {
+      font-size: var(--fluid-18-20);
+    }
+  }
+
+  & .content {
+    margin-top: var(--fluid-64-80);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 44px;
+  }
+
+  & .flag {
+    max-width: var(--fluid-400-560);
+    width: 100%;
+    margin-inline: auto;
+    flex-shrink: 0;
+
+    > img {
+      width: 100%;
+      border-radius: var(--fluid-5\.72-10\.01);
+    }
+  }
+
+  & .text {
+    margin-inline: auto;
+
+    & .name {
+      font-size: var(--fluid-22-32);
+      font-weight: 800;
+      margin-block: 0 var(--fluid-16-24);
+    }
+  }
+
+  & .quick-facts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+    justify-content: space-between;
+    margin-bottom: var(--fluid-34-68);
+
+    & p {
+      margin-top: 0;
+      line-height: 32px;
+      font-size: var(--fluid-14-16);
+    }
+  }
+
+  & .border-countries {
+    --justify: flex-start;
+    --space: 16px 15px;
+
+    & ul {
+      padding-inline-start: 0;
+      margin-block: 0;
+      --justify: flex-start;
+      --space: 10px;
+    }
+  }
+}

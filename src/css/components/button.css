@@ -1,0 +1,28 @@
+.btn {
+  border: 1px solid transparent;
+  border-radius: 6px;
+  font-size: var(--fluid-14-16);
+  font-weight: 300;
+  padding: var(--fluid-6-10) var(--fluid-24-32);
+  background-color: var(--button-bg, #fff);
+  box-shadow: 0 0 7px rgb(0 0 0 / 29.31%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--fluid-8-10);
+
+  &:where(a) {
+    text-decoration: none;
+    color: currentColor;
+  }
+
+  &.btn-sm {
+    font-size: var(--fluid-12-14);
+    box-shadow: 0 0 4px 1px rgb(0 0 0 / 10.49%);
+    padding-block: 6px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    --button-bg: var(--color-dark-blue);
+  }
+}
