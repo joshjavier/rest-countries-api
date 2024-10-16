@@ -1,24 +1,32 @@
 import { useSelect } from 'downshift'
 import ChevronIcon from '../icons/chevron-down.svg'
 import CrossIcon from '../icons/x.svg'
-import { MouseEvent } from 'react'
+import { MouseEvent, useMemo } from 'react'
+import { isStringArray } from '../utils'
 
-interface Option {
+export interface Option {
   value: string
   label: string
 }
 
 interface Props {
-  options: Option[]
+  options: Option[] | string[]
 }
 
 export function Select({ options }: Props) {
   const itemToString = (item: Option) => item.label
+  const itemToOption = (item: string): Option => ({ label: item, value: item })
+
+  const items = useMemo(() => {
+    return isStringArray(options)
+      ? options.map(itemToOption)
+      : options
+  }, [options])
 
   const {
     isOpen, selectedItem, getToggleButtonProps,
     getMenuProps, highlightedIndex, getItemProps, selectItem,
-  } = useSelect({ items: options, itemToString })
+  } = useSelect({ items, itemToString })
 
   const clearSelection = (e: MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation() // don't open the menu when clearing the selection
@@ -40,7 +48,7 @@ export function Select({ options }: Props) {
       </div>
 
       <ul className="menu" {...getMenuProps()}>
-        {isOpen && options.map((item, index) => (
+        {isOpen && items.map((item, index) => (
           <li
             key={item.value}
             style={{

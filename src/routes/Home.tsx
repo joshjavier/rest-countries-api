@@ -1,21 +1,21 @@
 import { useEffect, useState } from 'react'
-import { SearchBar, Select, Card } from '../components'
+import { SearchBar, Select, Card, Option } from '../components'
 import { CountrySimple } from '../data/entities'
 import { getCountries } from '../services/country'
 
-const regions = [
-  { value: 'africa', label: 'Africa' },
-  { value: 'america', label: 'America' },
-  { value: 'asia', label: 'Asia' },
-  { value: 'europe', label: 'Europe' },
-  { value: 'oceania', label: 'Oceania' },
-]
-
 export function Home() {
   const [countries, setCountries] = useState<CountrySimple[]>([])
+  const [regions, setRegions] = useState<string[]>([])
 
   useEffect(() => {
-    getCountries().then(setCountries).catch(console.log)
+    getCountries().then(countries => {
+      setCountries(countries)
+      setRegions(r => {
+        const regions = Array.from(new Set(countries.map(c => c.region)))
+        regions.sort((a, b) => a.localeCompare(b))
+        return regions
+      })
+    }).catch(console.log)
   }, [])
 
   return (
@@ -27,7 +27,7 @@ export function Home() {
 
       <div className="country-grid center">
         {countries.length > 0 ? (
-          countries.map(country => <Card country={country} />)
+          countries.map(country => <Card key={country.name} country={country} />)
         ) : (
           <div>Loading...</div>
         )}
