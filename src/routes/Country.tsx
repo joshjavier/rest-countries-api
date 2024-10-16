@@ -1,7 +1,7 @@
 import { Link, useParams } from 'react-router-dom'
 import ArrowIcon from '../icons/arrow-left.svg'
 import { CSSProperties, useEffect, useState } from 'react'
-import { getCountry } from '../services/country'
+import { getCountry, getCountryNames } from '../services/country'
 import { CountryDetail } from '../data/entities'
 import { CountryContent } from '../components'
 import { AxiosError } from 'axios'
@@ -14,15 +14,21 @@ export function Country() {
   useEffect(() => {
     if (!name) return
 
-    getCountry(name)
-      .then(country => {
-        setCountry(country)
+    async function fetchCountry(query: string) {
+      try {
+        const country = await getCountry(query)
+        if (country.borders.length > 0) {
+          country.borders = await getCountryNames(country.borders as string[])
+        }
         document.title = `${country.flag.emoji} ${country.name} | Where in the world?`
-      })
-      .catch(err => {
-        console.log(err)
-        setError(err)
-      })
+        setCountry(country)
+      } catch (error) {
+        console.log(error)
+        setError(error)
+      }
+    }
+
+    fetchCountry(name)
   }, [name])
 
   const style: CSSProperties = { textAlign: 'center', marginTop: 100 }

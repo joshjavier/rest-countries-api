@@ -20,6 +20,11 @@ export interface RestCountry {
   flags: Record<'png' | 'svg' | 'alt', string>
 }
 
+export interface CountryName {
+  code: string
+  name: string
+}
+
 export interface CountrySimple {
   code: string
   name: string
@@ -40,6 +45,6 @@ export interface CountryDetail {
   tld: string[]
   currencies: string[]
   languages: string[]
-  borders: string[]
+  borders: string[] | CountryName[]
   flag: Record<'png' | 'alt' | 'emoji', string>
 }

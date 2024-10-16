@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { CountryDetail, CountrySimple, RestCountry } from '../data/entities'
+import { CountryDetail, CountryName, CountrySimple, RestCountry } from '../data/entities'
 
 export const client = axios.create({
   baseURL: 'https://restcountries.com/v3.1/',
@@ -49,4 +49,17 @@ export async function getCountry(query: string): Promise<CountryDetail> {
   })
 
   return simplify(Array.isArray(data) ? data[0] : data)
+}
+
+export async function getCountryNames(codes: string[]): Promise<CountryName[]> {
+  const fields = 'cca3,name'
+  const { data } = await client.get<RestCountry[]>(`alpha?codes=${codes.join()}&fields=${fields}`)
+
+  // Simplify data structure
+  const countryNames = data.map(c => ({
+    code: c.cca3,
+    name: c.name.common,
+  }))
+
+  return countryNames
 }
