@@ -26,6 +26,7 @@ export default tseslint.config(
   {
     rules: {
       '@stylistic/brace-style': ['error', '1tbs'],
+      '@stylistic/multiline-ternary': ['error', { ignoreJSX: true }],
       '@stylistic/quotes': ['error', 'single', {
         allowTemplateLiterals: true,
         avoidEscape: true,

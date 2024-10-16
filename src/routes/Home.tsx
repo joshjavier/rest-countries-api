@@ -1,4 +1,7 @@
+import { useEffect, useState } from 'react'
 import { SearchBar, Select, Card } from '../components'
+import { CountrySimple } from '../data/entities'
+import { getCountries } from '../services/country'
 
 const regions = [
   { value: 'africa', label: 'Africa' },
@@ -8,15 +11,13 @@ const regions = [
   { value: 'oceania', label: 'Oceania' },
 ]
 
-const germany = {
-  name: 'Germany',
-  population: 81770900,
-  region: 'Europe',
-  capital: 'Berlin',
-  flag: 'https://flagcdn.com/w320/de.png',
-}
-
 export function Home() {
+  const [countries, setCountries] = useState<CountrySimple[]>([])
+
+  useEffect(() => {
+    getCountries().then(setCountries).catch(console.log)
+  }, [])
+
   return (
     <>
       <div className="filters cluster center">
@@ -25,8 +26,11 @@ export function Home() {
       </div>
 
       <div className="country-grid center">
-        <Card country={germany} />
-        <Card country={germany} />
+        {countries.length > 0 ? (
+          countries.map(country => <Card country={country} />)
+        ) : (
+          <div>Loading...</div>
+        )}
       </div>
     </>
   )

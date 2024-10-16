@@ -1,11 +1,7 @@
+import { CountrySimple } from "../data/entities"
+
 interface Props {
-  country: {
-    name: string
-    population: number
-    region: string
-    capital: string
-    flag: string
-  }
+  country: CountrySimple
 }
 
 export function Card({ country }: Props) {
@@ -15,7 +11,7 @@ export function Card({ country }: Props) {
   return (
     <article className="card">
       <div className="flag">
-        <img src={country.flag} alt="" />
+        <img loading="lazy" src={country.flag} alt="" />
       </div>
       <div className="text">
         <h3 className="title">{country.name}</h3>

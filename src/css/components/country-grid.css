@@ -3,6 +3,7 @@
   display: grid;
   gap: var(--fluid-40-75);
   margin-top: var(--fluid-32-48);
+  margin-bottom: 100px;
   justify-items: center;
 
   @media (min-width: 375px) {
