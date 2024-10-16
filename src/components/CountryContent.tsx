@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import { CountryDetail } from "../data/entities"
 
 interface Props {
@@ -36,7 +37,7 @@ export function CountryContent({ country }: Props) {
             <h2>Border Countries:</h2>
             <ul role="list" className="cluster">
               {country.borders.map(b =>
-                <CountryLink key={b} label={b} />
+                <CountryLink key={b} label={b} url={b.toLowerCase()} />
               )}
             </ul>
           </div>
@@ -65,11 +66,11 @@ function Line({ label, value }: LineProps) {
 
 interface CountryLinkProps {
   label: string
-  url?: string
+  url: string
 }
 
 function CountryLink({ label, url }: CountryLinkProps) {
   return (
-    <li><a className="btn btn-sm" href={url ?? '#'}>{label}</a></li>
+    <li><Link className="btn btn-sm" to={`/${url}`}>{label}</Link></li>
   )
 }

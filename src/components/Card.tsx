@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import { CountrySimple } from "../data/entities"
 
 interface Props {
@@ -14,7 +15,9 @@ export function Card({ country }: Props) {
         <img loading="lazy" src={country.flag} alt="" />
       </div>
       <div className="text">
-        <h3 className="title">{country.name}</h3>
+        <h3 className="title">
+          <Link to={country.code.toLowerCase()}>{country.name}</Link>
+        </h3>
         <div className="info">
           <p><strong>Population:</strong> {prettify(country.population)}</p>
           <p><strong>Region:</strong> {country.region}</p>

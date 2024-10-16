@@ -6,10 +6,11 @@ export const client = axios.create({
 })
 
 export async function getCountries(): Promise<CountrySimple[]> {
-  const { data } = await client.get<RestCountry[]>('all?fields=name,population,region,capital,flags')
+  const { data } = await client.get<RestCountry[]>('all?fields=cca3,name,population,region,capital,flags')
 
   // Simplify data structure
   const countries = data.map((country): CountrySimple => ({
+    code: country.cca3,
     name: country.name.common,
     capital: country.capital[0],
     flag: country.flags.png,
@@ -23,27 +24,29 @@ export async function getCountries(): Promise<CountrySimple[]> {
   return countries
 }
 
-export async function getCountry(name: string): Promise<CountryDetail> {
-  const fields = 'name,population,region,subregion,capital,tld,currencies,languages,borders,flag,flags'
-  const { data } = await client.get<RestCountry[]>(`name/${name}?fields=${fields}`)
+export async function getCountry(query: string): Promise<CountryDetail> {
+  const fields = 'cca3,name,population,region,subregion,capital,tld,currencies,languages,borders,flag,flags'
+  const endpoint = `${query.length === 3 ? 'alpha' : 'name'}/${query}`
+  const { data } = await client.get<RestCountry | RestCountry[]>(`${endpoint}?fields=${fields}`)
 
   // Simplify data structure
-  const country: CountryDetail = {
-    name: data[0].name.common,
-    nativeName: Object.values(data[0].name.nativeName)[0].common,
-    population: data[0].population,
-    region: data[0].region,
-    subregion: data[0].subregion,
-    capital: data[0].capital,
-    tld: data[0].tld,
-    currencies: Object.values(data[0].currencies).map(c => c.name),
-    languages: Object.values(data[0].languages).toSorted(),
-    borders: data[0].borders,
+  const simplify = (country: RestCountry): CountryDetail => ({
+    code: country.cca3,
+    name: country.name.common,
+    nativeName: Object.values(country.name.nativeName)[0].common,
+    population: country.population,
+    region: country.region,
+    subregion: country.subregion,
+    capital: country.capital,
+    tld: country.tld,
+    currencies: Object.values(country.currencies).map(c => c.name),
+    languages: Object.values(country.languages).toSorted(),
+    borders: country.borders,
     flag: {
-      ...data[0].flags,
-      emoji: data[0].flag,
+      ...country.flags,
+      emoji: country.flag,
     },
-  }
+  })
 
-  return country
+  return simplify(Array.isArray(data) ? data[0] : data)
 }

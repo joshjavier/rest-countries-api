@@ -23,7 +23,7 @@ export function Country() {
         console.log(err)
         setError(err)
       })
-  }, [])
+  }, [name])
 
   const style: CSSProperties = { textAlign: 'center', marginTop: 100 }
 

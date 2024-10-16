@@ -6,6 +6,7 @@ export interface RestCountry {
     }
   }
   tld: string[]
+  cca3: string
   currencies: {
     [key: string]: Record<'name' | 'symbol', string>
   }
@@ -20,6 +21,7 @@ export interface RestCountry {
 }
 
 export interface CountrySimple {
+  code: string
   name: string
   population: number
   region: string
@@ -28,7 +30,8 @@ export interface CountrySimple {
 }
 
 export interface CountryDetail {
-  name: string,
+  code: string
+  name: string
   nativeName: string
   population: number
   region: string
