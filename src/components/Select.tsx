@@ -1,32 +1,25 @@
 import { useSelect } from 'downshift'
 import ChevronIcon from '../icons/chevron-down.svg'
 import CrossIcon from '../icons/x.svg'
-import { MouseEvent, useMemo } from 'react'
-import { isStringArray } from '../utils'
-
-export interface Option {
-  value: string
-  label: string
-}
+import { MouseEvent } from 'react'
 
 interface Props {
-  options: Option[] | string[]
+  options: string[]
+  callback?: (selectedItem: string) => void
 }
 
-export function Select({ options }: Props) {
-  const itemToString = (item: Option) => item.label
-  const itemToOption = (item: string): Option => ({ label: item, value: item })
-
-  const items = useMemo(() => {
-    return isStringArray(options)
-      ? options.map(itemToOption)
-      : options
-  }, [options])
-
+export function Select({ options, callback }: Props) {
   const {
     isOpen, selectedItem, getToggleButtonProps,
     getMenuProps, highlightedIndex, getItemProps, selectItem,
-  } = useSelect({ items, itemToString })
+  } = useSelect({
+    items: options,
+    onSelectedItemChange(changes) {
+      if (callback) {
+        callback(changes.selectedItem)
+      }
+    },
+  })
 
   const clearSelection = (e: MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation() // don't open the menu when clearing the selection
@@ -38,7 +31,7 @@ export function Select({ options }: Props) {
       <label className="visually-hidden">Filter countries by region</label>
 
       <div className="toggle-button" {...getToggleButtonProps()}>
-        <span>{selectedItem ? selectedItem.label : 'Filter by Region'}</span>
+        <span>{selectedItem || 'Filter by Region'}</span>
         {selectedItem && (
           <button className="clear" aria-label="Clear selection" onClick={clearSelection}>
             <CrossIcon className="icon" />
@@ -48,16 +41,16 @@ export function Select({ options }: Props) {
       </div>
 
       <ul className="menu" {...getMenuProps()}>
-        {isOpen && items.map((item, index) => (
+        {isOpen && options.map((item, index) => (
           <li
-            key={item.value}
+            key={item}
             style={{
               backgroundColor: highlightedIndex === index ? 'color-mix(in srgb, var(--color-text), transparent 90%)' : 'transparent',
               fontWeight: selectedItem === item ? 800 : 300,
             }}
             {...getItemProps({ item, index })}
           >
-            <span>{item.label}</span>
+            <span>{item}</span>
           </li>
         ))}
       </ul>
