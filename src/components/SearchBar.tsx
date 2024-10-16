@@ -1,9 +1,21 @@
-import { useState } from 'react'
+import { ChangeEvent, useEffect, useRef, useState } from 'react'
 import SearchIcon from '../icons/search.svg'
 import CrossIcon from '../icons/x.svg'
+import { useDebounce } from '@uidotdev/usehooks'
 
-export function SearchBar() {
+interface Props {
+  callback?: (query: string) => void
+}
+
+export function SearchBar({ callback }: Props) {
   const [query, setQuery] = useState<string>('')
+  const debouncedQuery = useDebounce(query, 300)
+
+  useEffect(() => {
+    if (callback) {
+      callback(debouncedQuery)
+    }
+  }, [debouncedQuery])
 
   return (
     <search className="search-bar">
