@@ -1,7 +1,32 @@
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import ArrowIcon from '../icons/arrow-left.svg'
+import { CSSProperties, useEffect, useState } from 'react'
+import { getCountry } from '../services/country'
+import { CountryDetail } from '../data/entities'
+import { CountryContent } from '../components'
+import { AxiosError } from 'axios'
 
 export function Country() {
+  const [country, setCountry] = useState<CountryDetail | null>(null)
+  const [error, setError] = useState<Error | AxiosError | null>(null)
+  const { name } = useParams()
+
+  useEffect(() => {
+    if (!name) return
+
+    getCountry(name)
+      .then(country => {
+        setCountry(country)
+        document.title = `${country.flag.emoji} ${country.name} | Where in the world?`
+      })
+      .catch(err => {
+        console.log(err)
+        setError(err)
+      })
+  }, [])
+
+  const style: CSSProperties = { textAlign: 'center', marginTop: 100 }
+
   return (
     <div className="country center">
       <Link to="/" className="btn back-link">
@@ -9,69 +34,19 @@ export function Country() {
         Back
       </Link>
 
-      <article className="content">
-        <div className="flag">
-          <img src="https://flagcdn.com/w320/be.png" alt="The flag of Belgium is composed of three equal vertical bands of black, yellow and red." />
+      {error ? (
+        <div style={style}>
+          Error: {
+            error instanceof AxiosError && error.status === 404
+              ? 'No matching countries.'
+              : error.message
+          }
         </div>
-
-        <div className="text">
-          <h1 className="name">Belgium</h1>
-
-          <div className="quick-facts">
-            <h2 className="visually-hidden">Quick Facts</h2>
-            <div className="left">
-              <Line label="Native Name" value="België" />
-              <Line label="Population" value={11319511} />
-              <Line label="Region" value="Europe" />
-              <Line label="Sub Region" value="Western Europe" />
-              <Line label="Capital" value="Brussels" />
-            </div>
-
-            <div className="right">
-              <Line label="Top Level Domain" value=".be" />
-              <Line label="Currency" value="Euro" />
-              <Line label="Languages" value={['Dutch', 'French', 'German']} />
-            </div>
-          </div>
-
-          <div className="border-countries cluster">
-            <h2>Border Countries:</h2>
-            <ul role="list" className="cluster">
-              <CountryLink label="France" />
-              <CountryLink label="Germany" />
-              <CountryLink label="Netherlands" />
-            </ul>
-          </div>
-        </div>
-      </article>
+      ) : country ? (
+        <CountryContent country={country} />
+      ) : (
+        <div style={style}>Loading...</div>
+      )}
     </div>
-  )
-}
-
-interface LineProps {
-  label: string
-  value: string | number | string[]
-}
-
-function Line({ label, value }: LineProps) {
-  if (typeof value === 'number') {
-    value = new Intl.NumberFormat('en-US').format(value)
-  } else if (Array.isArray(value)) {
-    value = value.join(', ')
-  }
-
-  return (
-    <p><strong>{label}:</strong> {value || 'Not Available'}</p>
-  )
-}
-
-interface CountryLinkProps {
-  label: string
-  url?: string
-}
-
-function CountryLink({ label, url }: CountryLinkProps) {
-  return (
-    <li><a className="btn btn-sm" href={url ?? '#'}>{label}</a></li>
   )
 }

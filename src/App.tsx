@@ -7,7 +7,7 @@ export function App() {
       <Routes>
         <Route path="/" element={<Root />}>
           <Route index element={<Home />} />
-          <Route path="country" element={<Country />} />
+          <Route path=":name" element={<Country />} />
         </Route>
       </Routes>
     </BrowserRouter>

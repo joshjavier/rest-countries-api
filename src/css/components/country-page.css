@@ -38,6 +38,7 @@
 
   & .text {
     margin-inline: auto;
+    max-width: 574px;
 
     & .name {
       font-size: var(--fluid-22-32);
