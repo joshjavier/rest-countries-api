@@ -2,6 +2,7 @@
 import eslint from '@eslint/js'
 import tseslint from 'typescript-eslint'
 import stylistic from '@stylistic/eslint-plugin'
+import pluginQuery from '@tanstack/eslint-plugin-query'
 
 export default tseslint.config(
   { ignores: ['dist'] },
@@ -21,6 +22,7 @@ export default tseslint.config(
     ...tseslint.configs.disableTypeChecked,
   },
   stylistic.configs['recommended-flat'],
+  ...pluginQuery.configs['flat/recommended'],
 
   // my preferences
   {
