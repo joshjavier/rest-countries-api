@@ -38,11 +38,11 @@ export function Home() {
 
       <div className="country-grid center">
         {countries == null ? (
-          <div>Loading...</div>
+          <div style={{ gridColumn: '1 / -1', marginTop: 100 }}>Loading...</div>
         ) : countriesToShow.length > 0 ? (
           countriesToShow.map(country => <Card key={country.code} country={country} />)
         ) : (
-          <div>No matching countries.</div>
+          <div style={{ gridColumn: '1 / -1', marginTop: 100 }}>No matching countries.</div>
         )}
       </div>
     </>

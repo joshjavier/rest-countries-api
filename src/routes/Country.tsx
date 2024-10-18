@@ -4,11 +4,11 @@ import { CSSProperties, useEffect, useState } from 'react'
 import { getCountry, getCountryNames } from '../services/country'
 import { CountryDetail } from '../data/entities'
 import { CountryContent } from '../components'
-import { AxiosError } from 'axios'
+import axios from 'axios'
 
 export function Country() {
   const [country, setCountry] = useState<CountryDetail | null>(null)
-  const [error, setError] = useState<Error | AxiosError | null>(null)
+  const [error, setError] = useState<Error | null>(null)
   const { name } = useParams()
 
   useEffect(() => {
@@ -22,13 +22,13 @@ export function Country() {
         }
         document.title = `${country.flag.emoji} ${country.name} | Where in the world?`
         setCountry(country)
-      } catch (error) {
+      } catch (error: unknown) {
         console.log(error)
-        setError(error)
+        setError(error as Error)
       }
     }
 
-    fetchCountry(name)
+    void fetchCountry(name)
   }, [name])
 
   const style: CSSProperties = { textAlign: 'center', marginTop: 100 }
@@ -43,7 +43,7 @@ export function Country() {
       {error ? (
         <div style={style}>
           Error: {
-            error instanceof AxiosError && error.status === 404
+            axios.isAxiosError(error) && error.status === 404
               ? 'No matching countries.'
               : error.message
           }

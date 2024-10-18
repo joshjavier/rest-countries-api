@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import SearchIcon from '../icons/search.svg'
 import CrossIcon from '../icons/x.svg'
 import { useDebounce } from '@uidotdev/usehooks'

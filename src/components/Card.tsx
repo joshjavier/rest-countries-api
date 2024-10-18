@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom"
-import { CountrySimple } from "../data/entities"
+import { Link } from 'react-router-dom'
+import { CountrySimple } from '../data/entities'
 
 interface Props {
   country: CountrySimple

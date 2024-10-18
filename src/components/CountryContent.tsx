@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom"
-import { CountryDetail, CountryName } from "../data/entities"
+import { Link } from 'react-router-dom'
+import { CountryDetail, CountryName } from '../data/entities'
 
 interface Props {
   country: CountryDetail
@@ -36,12 +36,13 @@ export function CountryContent({ country }: Props) {
           <div className="border-countries cluster">
             <h2>Border Countries:</h2>
             <ul role="list" className="cluster">
-              {(country.borders as CountryName[]).map(b =>
+              {(country.borders as CountryName[]).map(b => (
                 <CountryLink
                   key={b.code}
                   label={b.name}
-                  url={b.code.toLowerCase()} />
-              )}
+                  url={b.code.toLowerCase()}
+                />
+              ))}
             </ul>
           </div>
         )}

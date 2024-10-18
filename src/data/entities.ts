@@ -1,15 +1,11 @@
 export interface RestCountry {
   name: {
     common: string
-    nativeName: {
-      [key: string]: Record<'official' | 'common', string>
-    }
+    nativeName: Record<string, Record<'official' | 'common', string>>
   }
   tld: string[]
   cca3: string
-  currencies: {
-    [key: string]: Record<'name' | 'symbol', string>
-  }
+  currencies: Record<string, Record<'name' | 'symbol', string>>
   capital: string[]
   region: string
   subregion: string

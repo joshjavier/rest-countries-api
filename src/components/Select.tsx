@@ -31,7 +31,7 @@ export function Select({ options, callback }: Props) {
       <label className="visually-hidden">Filter countries by region</label>
 
       <div className="toggle-button" {...getToggleButtonProps()}>
-        <span>{selectedItem || 'Filter by Region'}</span>
+        <span>{selectedItem ?? 'Filter by Region'}</span>
         {selectedItem && (
           <button className="clear" aria-label="Clear selection" onClick={clearSelection}>
             <CrossIcon className="icon" />
