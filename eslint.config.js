@@ -28,12 +28,12 @@ export default tseslint.config(
   {
     rules: {
       '@stylistic/brace-style': ['error', '1tbs'],
-      '@stylistic/multiline-ternary': ['error', 'always-multiline', { ignoreJSX: true }],
+      '@stylistic/multiline-ternary': 'off',
       '@stylistic/quotes': ['error', 'single', {
         allowTemplateLiterals: true,
         avoidEscape: true,
       }],
-      '@stylistic/jsx-one-expression-per-line': ['error', { allow: 'single-line' }],
+      '@stylistic/jsx-one-expression-per-line': 'off',
     },
   },
 )

@@ -53,7 +53,7 @@ export function CountryContent({ country }: Props) {
 
 interface LineProps {
   label: string
-  value: string | number | string[]
+  value: string | number | string[] | null
 }
 
 function Line({ label, value }: LineProps) {
@@ -64,7 +64,8 @@ function Line({ label, value }: LineProps) {
   }
 
   return (
-    <p><strong>{label}:</strong> {value || 'Not Available'}</p>
+    // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
+    <p><strong>{label}:</strong> {value || 'None'}</p>
   )
 }
 

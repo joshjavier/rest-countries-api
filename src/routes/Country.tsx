@@ -1,35 +1,33 @@
 import { Link, useParams } from 'react-router-dom'
 import ArrowIcon from '../icons/arrow-left.svg'
-import { CSSProperties, useEffect, useState } from 'react'
+import { CSSProperties, useEffect } from 'react'
 import { getCountry, getCountryNames } from '../services/country'
-import { CountryDetail } from '../data/entities'
 import { CountryContent } from '../components'
 import axios from 'axios'
+import { useQuery } from '@tanstack/react-query'
+
+type CountryParams = {
+  name: string
+}
 
 export function Country() {
-  const [country, setCountry] = useState<CountryDetail | null>(null)
-  const [error, setError] = useState<Error | null>(null)
-  const { name } = useParams()
+  const { name } = useParams() as CountryParams
+  const country = useQuery({
+    queryKey: ['country', name],
+    queryFn: () => getCountry(name),
+    staleTime: 5 * 60 * 1000,
+  })
+  const borders = useQuery({
+    queryKey: ['borders', name],
+    queryFn: () => getCountryNames(country.data!.borders as string[]),
+    enabled: !!country.data,
+    staleTime: 5 * 60 * 1000,
+  })
 
   useEffect(() => {
-    if (!name) return
-
-    async function fetchCountry(query: string) {
-      try {
-        const country = await getCountry(query)
-        if (country.borders.length > 0) {
-          country.borders = await getCountryNames(country.borders as string[])
-        }
-        document.title = `${country.flag.emoji} ${country.name} | Where in the world?`
-        setCountry(country)
-      } catch (error: unknown) {
-        console.log(error)
-        setError(error as Error)
-      }
-    }
-
-    void fetchCountry(name)
-  }, [name])
+    if (!country.data) return
+    document.title = `${country.data.flag.emoji} ${country.data.name} | Where in the world?`
+  }, [country.data])
 
   const style: CSSProperties = { textAlign: 'center', marginTop: 100 }
 
@@ -40,16 +38,16 @@ export function Country() {
         Back
       </Link>
 
-      {error ? (
+      {country.error ? (
         <div style={style}>
           Error: {
-            axios.isAxiosError(error) && error.status === 404
+            axios.isAxiosError(country.error) && country.error.status === 404
               ? 'No matching countries.'
-              : error.message
+              : country.error.message
           }
         </div>
-      ) : country ? (
-        <CountryContent country={country} />
+      ) : country.data && borders.data ? (
+        <CountryContent country={{ ...country.data, borders: borders.data }} />
       ) : (
         <div style={style}>Loading...</div>
       )}

@@ -5,7 +5,10 @@ export const client = axios.create({
   baseURL: 'https://restcountries.com/v3.1/',
 })
 
-export async function getCountries(): Promise<CountrySimple[]> {
+export async function getCountries(): Promise<{
+  countries: CountrySimple[]
+  regions: string[]
+}> {
   const { data } = await client.get<RestCountry[]>('all?fields=cca3,name,population,region,capital,flags')
 
   // Simplify data structure
@@ -21,7 +24,11 @@ export async function getCountries(): Promise<CountrySimple[]> {
   // Sort alphabetically
   countries.sort((a, b) => a.name.localeCompare(b.name, 'en'))
 
-  return countries
+  // Collect regions into an array
+  const regions = Array.from(new Set(countries.map(c => c.region)))
+  regions.sort((a, b) => a.localeCompare(b))
+
+  return { countries, regions }
 }
 
 export async function getCountry(query: string): Promise<CountryDetail> {
@@ -33,7 +40,7 @@ export async function getCountry(query: string): Promise<CountryDetail> {
   const simplify = (country: RestCountry): CountryDetail => ({
     code: country.cca3,
     name: country.name.common,
-    nativeName: Object.values(country.name.nativeName)[0].common,
+    nativeName: Object.values(country.name.nativeName)[0]?.common,
     population: country.population,
     region: country.region,
     subregion: country.subregion,
@@ -52,6 +59,8 @@ export async function getCountry(query: string): Promise<CountryDetail> {
 }
 
 export async function getCountryNames(codes: string[]): Promise<CountryName[]> {
+  if (codes.length === 0) return []
+
   const fields = 'cca3,name'
   const { data } = await client.get<RestCountry[]>(`alpha?codes=${codes.join()}&fields=${fields}`)
 

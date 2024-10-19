@@ -21,7 +21,7 @@ export function Card({ country }: Props) {
         <div className="info">
           <p><strong>Population:</strong> {prettify(country.population)}</p>
           <p><strong>Region:</strong> {country.region}</p>
-          <p><strong>Capital:</strong> {country.capital}</p>
+          <p><strong>Capital:</strong> {country.capital || 'None'}</p>
         </div>
       </div>
     </article>

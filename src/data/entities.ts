@@ -33,7 +33,7 @@ export interface CountrySimple {
 export interface CountryDetail {
   code: string
   name: string
-  nativeName: string
+  nativeName: string | null
   population: number
   region: string
   subregion: string
