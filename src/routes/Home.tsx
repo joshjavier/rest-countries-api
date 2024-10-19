@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { SearchBar, Select, Card } from '../components'
+import { SearchBar, Select, Card, generateCardLoaders } from '../components'
 import { CountrySimple } from '../data/entities'
 import { getCountries } from '../services/country'
 import { useQuery } from '@tanstack/react-query'
@@ -35,7 +35,7 @@ export function Home() {
 
       <div className="country-grid center">
         {isPending ? (
-          <div style={{ gridColumn: '1 / -1', marginTop: 100 }}>Loading...</div>
+          generateCardLoaders(8)
         ) : isError ? (
           <div style={{ gridColumn: '1 / -1', marginTop: 100 }}>Error: {error?.message}</div>
         ) : countriesToShow && countriesToShow.length > 0 ? (

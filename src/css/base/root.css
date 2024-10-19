@@ -9,9 +9,14 @@
   --color-sheet: var(--color-very-light-gray);
   --color-text: var(--color-very-dark-blue-b);
 
+  --loader-bg: #f3f3f3;
+  --loader-fg: #ecebeb;
+
   @media (prefers-color-scheme: dark) {
     --color-sheet: var(--color-very-dark-blue-a);
     --color-text: #fff;
+    --loader-bg: var(--color-dark-blue);
+    --loader-fg: var(--color-very-dark-blue-a);
   }
 
   /* Typography */
