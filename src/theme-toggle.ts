@@ -1,6 +1,6 @@
 type Theme = 'light' | 'dark'
 
-function getThemePreference(key = 'theme-preference'): Theme {
+window.getThemePreference = (key = 'theme-preference'): Theme => {
   const themePreference = localStorage.getItem(key)
   if (typeof themePreference === 'string') {
     return themePreference as Theme
@@ -11,7 +11,7 @@ function getThemePreference(key = 'theme-preference'): Theme {
   }
 }
 
-function reflectThemeChange() {
+window.reflectThemeChange = () => {
   document.documentElement.setAttribute('data-theme', getThemePreference())
 }
 

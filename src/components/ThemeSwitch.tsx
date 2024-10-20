@@ -14,7 +14,7 @@ export function ThemeSwitch() {
     setActive((a) => {
       html.current.dataset.theme = a ? 'light' : 'dark'
       localStorage.setItem('theme-preference', a ? 'light' : 'dark')
-      window.reflectThemeChange()
+      reflectThemeChange()
       return !a
     })
   }
