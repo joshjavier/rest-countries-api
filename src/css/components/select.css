@@ -16,7 +16,11 @@
     background-color: var(--select-bg, #fff);
     box-shadow: var(--shadow);
 
-    &[aria-expanded="false"] .icon-expand {
+    &:where(:hover, [aria-expanded="true"]) {
+      --shadow: 0 2px 19px 2px rgb(0 0 0 / 15.32%);
+    }
+
+    &[aria-expanded="true"] .icon-expand {
       transform: rotateZ(180deg);
     }
   }
