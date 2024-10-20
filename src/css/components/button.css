@@ -29,8 +29,4 @@
       box-shadow: 0 0 14px 6px rgb(0 0 0 / 10.49%);
     }
   }
-
-  @media (prefers-color-scheme: dark) {
-    --button-bg: var(--color-dark-blue);
-  }
 }

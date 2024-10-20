@@ -3,7 +3,6 @@
   width: 100%;
   height: var(--fluid-48-56);
   position: relative;
-  --input-bg: #fff;
 
   & form {
     height: 100%;
@@ -18,7 +17,7 @@
     border-radius: 5px;
     border: 1px solid transparent;
     padding-inline: 74px;
-    background-color: var(--input-bg);
+    background-color: var(--input-bg, #fff);
     color: var(--color-very-dark-blue-b);
     font-size: var(--fluid-12-14);
     box-shadow: 0 2px 9px rgb(0 0 0 / 5.32%);
@@ -34,7 +33,7 @@
 
   & .icon {
     font-size: var(--fluid-16-18);
-    color: var(--color-text);
+    color: var(--search-icon-fill, var(--color-text));
     pointer-events: none;
   }
 
@@ -55,22 +54,5 @@
     padding: .4rem;
     background-color: transparent;
     border-radius: 999em;
-  }
-
-  @media (prefers-color-scheme: light) {
-    --color-text: var(--color-dark-gray);
-  }
-
-  @media (prefers-color-scheme: dark) {
-    --input-bg: var(--color-dark-blue);
-
-    & input[type="search"] {
-      color: var(--color-text);
-
-      &::placeholder {
-        color: var(--color-text);
-      }
-    }
-
   }
 }

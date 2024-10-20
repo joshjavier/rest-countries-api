@@ -12,11 +12,29 @@
   --loader-bg: #f3f3f3;
   --loader-fg: #ecebeb;
 
-  @media (prefers-color-scheme: dark) {
+  &[data-theme="light"] {
+    --moon-icon-outline: 1.25;
+    --search-icon-fill: var(--color-dark-gray);
+  }
+
+  &[data-theme="dark"] {
     --color-sheet: var(--color-very-dark-blue-a);
     --color-text: #fff;
     --loader-bg: var(--color-dark-blue);
     --loader-fg: var(--color-very-dark-blue-a);
+    --button-bg: var(--color-dark-blue);
+    --card-bg: var(--color-dark-blue);
+    --header-bg: var(--color-dark-blue);
+    --select-bg: var(--color-dark-blue);
+    --input-bg: var(--color-dark-blue);
+
+    & input[type="search"] {
+      color: var(--color-text);
+
+      &::placeholder {
+        color: var(--color-text);
+      }
+    }
   }
 
   /* Typography */

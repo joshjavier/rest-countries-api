@@ -1,5 +1,5 @@
 header {
-  background-color: #fff;
+  background-color: var(--header-bg, #fff);
   height: 80px;
   box-shadow: 0 2px 4px rgb(0 0 0 / 5.62%);
 
@@ -9,9 +9,5 @@ header {
     align-items: center;
     justify-content: space-between;
     gap: 1rem;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    background-color: var(--color-dark-blue);
   }
 }

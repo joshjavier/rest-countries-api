@@ -18,8 +18,5 @@ Single-colored icons can be modified like so:
 .icon-moon {
   font-size: var(--fluid-16-20);
   fill: #fff;
-
-  @media (prefers-color-scheme: light) {
-    stroke-width: 1.25;
-  }
+  stroke-width: var(--moon-icon-outline, 0);
 }
