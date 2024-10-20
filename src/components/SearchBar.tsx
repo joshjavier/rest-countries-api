@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { FormEvent, useEffect, useRef, useState } from 'react'
 import SearchIcon from '../icons/search.svg'
 import CrossIcon from '../icons/x.svg'
 import { useDebounce } from '@uidotdev/usehooks'
@@ -10,6 +10,7 @@ interface Props {
 export function SearchBar({ callback }: Props) {
   const [query, setQuery] = useState<string>('')
   const debouncedQuery = useDebounce(query, 300)
+  const input = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
     if (callback) {
@@ -17,9 +18,14 @@ export function SearchBar({ callback }: Props) {
     }
   }, [debouncedQuery])
 
+  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    input.current?.blur() // focus out of the input to hide the keypad on mobile
+  }
+
   return (
     <search className="search-bar">
-      <form>
+      <form onSubmit={onSubmit}>
         <input
           type="search"
           name="q"
@@ -28,6 +34,8 @@ export function SearchBar({ callback }: Props) {
           aria-label="Search for a country"
           value={query}
           onChange={e => setQuery(e.target.value)}
+          enterKeyHint="search"
+          ref={input}
         />
       </form>
 
