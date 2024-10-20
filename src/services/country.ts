@@ -47,7 +47,7 @@ export async function getCountry(query: string): Promise<CountryDetail> {
     capital: country.capital,
     tld: country.tld,
     currencies: Object.values(country.currencies).map(c => c.name),
-    languages: Object.values(country.languages).toSorted(),
+    languages: Object.values(country.languages).sort(),
     borders: country.borders,
     flag: {
       ...country.flags,

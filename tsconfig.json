@@ -3,6 +3,6 @@
     "jsx": "react-jsx",
     "noImplicitAny": true,
     "strictNullChecks": true,
-    "lib": ["es2023", "dom"]
+    "lib": ["dom"]
   }
 }
