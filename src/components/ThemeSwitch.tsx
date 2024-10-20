@@ -8,15 +8,24 @@ export function ThemeSwitch() {
   useEffect(() => {
     // Set the initial active state based on the `data-theme` attribute
     setActive(html.current.dataset.theme === 'dark')
+
+    // Listen to changes in `prefers-color-scheme` and adapt accordingly
+    window
+      .matchMedia('(prefers-color-scheme: dark)')
+      .addEventListener('change', ({ matches: isDark }) => {
+        setActive(setThemePreference(isDark))
+      })
   }, [])
 
   const toggle = () => {
-    setActive((a) => {
-      html.current.dataset.theme = a ? 'light' : 'dark'
-      localStorage.setItem('theme-preference', a ? 'light' : 'dark')
-      reflectThemeChange()
-      return !a
-    })
+    setActive(a => setThemePreference(!a))
+  }
+
+  const setThemePreference = (isDark: boolean): boolean => {
+    html.current.dataset.theme = isDark ? 'dark' : 'light'
+    localStorage.setItem('theme-preference', isDark ? 'dark' : 'light')
+
+    return isDark
   }
 
   return (
