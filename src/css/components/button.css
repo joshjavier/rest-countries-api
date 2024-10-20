@@ -16,10 +16,18 @@
     color: currentColor;
   }
 
+  &:hover {
+    box-shadow: 0 0 12px 1px rgb(0 0 0 / 29.31%);
+  }
+
   &.btn-sm {
     font-size: var(--fluid-12-14);
     box-shadow: 0 0 4px 1px rgb(0 0 0 / 10.49%);
     padding-block: 6px;
+
+    &:hover {
+      box-shadow: 0 0 14px 6px rgb(0 0 0 / 10.49%);
+    }
   }
 
   @media (prefers-color-scheme: dark) {
