@@ -38,7 +38,7 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
+- Solution URL: https://www.frontendmentor.io/solutions/rest-countries-api-with-dark-mode-ft-react-ts-query-router-parcel-xr6V2iK_5C
 - Live Site URL: https://rest-countries-api-16m.pages.dev/
 
 ## My process
