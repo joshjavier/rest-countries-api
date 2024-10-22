@@ -1,100 +1,142 @@
-# Frontend Mentor - REST Countries API with color theme switcher
+# Frontend Mentor - REST Countries API with color theme switcher solution (v2)
 
-![Design preview for the REST Countries API with color theme switcher coding challenge](./design/desktop-preview.jpg)
+This is my updated solution to the [REST Countries API with color theme switcher challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/rest-countries-api-with-color-theme-switcher-5cacc469fec04111f7b848ca).
 
-## Welcome! 👋
+(For the original solution, [see the main branch](https://github.com/joshjavier/rest-countries-api/tree/main).)
 
-Thanks for checking out this front-end coding challenge.
+## Table of contents
 
-[Frontend Mentor](https://www.frontendmentor.io) challenges help you improve your coding skills by building realistic projects.
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [Screenshots](#screenshots)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
+  - [What I learned](#what-i-learned)
+  - [Useful resources](#useful-resources)
+- [Author](#author)
+<!-- - [Acknowledgments](#acknowledgments) -->
 
-**To do this challenge, you need a good understanding of HTML, CSS, and JavaScript.**
+## Overview
 
-## The challenge
+### The challenge
 
-Your challenge is to integrate with the [REST Countries API](https://restcountries.com) to pull country data and display it like in the designs.
+Users should be able to:
 
-You can use any JavaScript framework/library on the front-end such as [React](https://reactjs.org) or [Vue](https://vuejs.org). You also have complete control over which packages you use to do things like make HTTP requests or style your project.
+- [x] See all countries from the API on the homepage
+- [x] Search for a country using an `input` field
+- [x] Filter countries by region
+- [x] Click on a country to see more detailed information on a separate page
+- [x] Click through to the border countries on the detail page
+- [x] Toggle the color scheme between light and dark mode *(optional)*
 
-Your users should be able to:
+### Screenshots
 
-- See all countries from the API on the homepage
-- Search for a country using an `input` field
-- Filter countries by region
-- Click on a country to see more detailed information on a separate page
-- Click through to the border countries on the detail page
-- Toggle the color scheme between light and dark mode *(optional)*
+![](./docs/screenshot-desktop.png)
 
-Want some support on the challenge? [Join our community](https://www.frontendmentor.io/community) and ask questions in the **#help** channel.
+![](./docs/screenshot-mobile.jpg)
 
-**⚠️ NOTE ⚠️: Sometimes the REST Countries API can go down. We've added a `data.json` file with all the country data if you prefer to use that instead. However, please be aware that the data in the JSON file might not be up-to-date.**
+### Links
 
-## Where to find everything
+- Solution URL: [Add solution URL here](https://your-solution-url.com)
+- Live Site URL: https://rest-countries-api-16m.pages.dev/
 
-Your task is to build out the project to the designs inside the `/design` folder. 
+## My process
 
-In this challenge, you will find mobile and desktop designs in light and dark mode color schemes for both pages.
+### Built with
 
-The designs are in JPG static format. Using JPGs will mean that you'll need to use your best judgment for styles such as `font-size`, `padding` and `margin`. 
+- [Parcel](https://parceljs.org/) - zero config build tool
+- [React](https://react.dev/) & [TypeScript](https://www.typescriptlang.org/)
+- [React Router](https://reactrouter.com/) - client-side routing
+- [TanStack Query](https://tanstack.com/query) - formerly known as React Query, used for data fetching and caching
+- [Axios](https://axios-http.com/) - Promise-based HTTP client
+- [REST Countries v3.1](https://restcountries.com/) - The Data Source
+- [React Content Loader](https://skeletonreact.com/) - skeleton loaders
 
-If you would like the design files (we provide Sketch & Figma versions) to inspect the design in more detail, you can [subscribe as a PRO member](https://www.frontendmentor.io/pro).
+### What I learned
 
-There are no assets for this challenge, as the country flags will be pulled from the [REST Countries API](https://restcountries.com) and you can use an icon font library for the icons.
+First of all, **I love Parcel. It Just Works&trade;**
 
-There is also a `style-guide.md` file containing the information you'll need, such as color palette and fonts.
+I've been using Lightning CSS in my recent projects, but Vite uses PostCSS (by default). So, since Lightning CSS is made by the creator of Parcel, I finally decided to give it a try. And I'm glad I did.
 
-## Building your project
+True to its name, Parcel works with zero or minimal config. Want to use TypeScript? Use a `<script>` tag with the `src` attribute pointing to a `.tsx` file&mdash;it just works. Need to use SVG as a React component? Import it inside a component module&mdash;it just works.
 
-Feel free to use any workflow that you feel comfortable with. Below is a suggested process, but do not feel like you need to follow these steps:
+That said, I did find some things that are lacking, like Storybook support. [According to this GitHub issue](https://github.com/parcel-bundler/parcel/issues/3321), seems like Parcel support for Storybook isn't coming anytime soon. 😔
 
-1. Initialize your project as a public repository on [GitHub](https://github.com/). Creating a repo will make it easier to share your code with the community if you need help. If you're not sure how to do this, [have a read-through of this Try Git resource](https://try.github.io/).
-2. Configure your repository to publish your code to a web address. This will also be useful if you need some help during a challenge as you can share the URL for your project with your repo URL. There are a number of ways to do this, and we provide some recommendations below.
-3. Look through the designs to start planning out how you'll tackle the project. This step is crucial to help you think ahead for CSS classes to create reusable styles.
-4. Before adding any styles, structure your content with HTML. Writing your HTML first can help focus your attention on creating well-structured content.
-5. Write out the base styles for your project, including general content styles, such as `font-family` and `font-size`.
-6. Start adding styles to the top of the page and work down. Only move on to the next section once you're happy you've completed the area you're working on.
+For this project, Parcel is still a good fit due to its ease of use, especially since the components aren't that complex.
 
-## Deploying your project
+**Bye, theme flicker**
 
-As mentioned above, there are many ways to host your project for free. Our recommended hosts are:
+[My original solution](https://whereintheworld-88.netlify.app/) flickers on page load from a blank white page, then to dark mode. This is because the logic for detecting the user's theme preference is located in the `<DarkModeToggle />` component, so only after React is loaded does the theme kick in.
 
-- [GitHub Pages](https://pages.github.com/)
-- [Vercel](https://vercel.com/)
-- [Netlify](https://www.netlify.com/)
+In this updated solution, I solved the theme flicker issue by placing a script tag in the `<head>` which detects the user's theme preference and sets it as early as possible before styles are even applied. Generally, blocking JavaScript is bad, but in this case the code is relatively small and greatly enhances UX, so it's a fair tradeoff.
 
-You can host your site using one of these solutions or any of our other trusted providers. [Read more about our recommended and trusted hosts](https://medium.com/frontend-mentor/frontend-mentor-trusted-hosting-providers-bf000dfebe).
+```ts
+type Theme = 'light' | 'dark'
 
-## Create a custom `README.md`
+window.getThemePreference = (key = 'theme-preference'): Theme => {
+  const themePreference = localStorage.getItem(key)
+  if (typeof themePreference === 'string') {
+    return themePreference as Theme
+  } else {
+    return window.matchMedia('(prefers-color-scheme: dark)').matches
+      ? 'dark'
+      : 'light'
+  }
+}
 
-We strongly recommend overwriting this `README.md` with a custom one. We've provided a template inside the [`README-template.md`](./README-template.md) file in this starter code.
+window.reflectThemeChange = () => {
+  document.documentElement.setAttribute('data-theme', getThemePreference())
+}
 
-The template provides a guide for what to add. A custom `README` will help you explain your project and reflect on your learnings. Please feel free to edit our template as much as you like.
+// Set the `data-theme` attribute early to prevent page flashes
+reflectThemeChange()
+```
 
-Once you've added your information to the template, delete this file and rename the `README-template.md` file to `README.md`. That will make it show up as your repository's README file.
+The rest of the theme switch functionality, such as user toggle and automatic switching when `prefers-color-scheme` changes (e.g., when the user switches their device from light to dark mode and vice versa) is offloaded to the `<ThemeSwitch />` component.
 
-## Submitting your solution
+**Be lazy (when loading images)**
 
-Submit your solution on the platform for the rest of the community to see. Follow our ["Complete guide to submitting solutions"](https://medium.com/frontend-mentor/a-complete-guide-to-submitting-solutions-on-frontend-mentor-ac6384162248) for tips on how to do this.
+There are 250 countries in the REST Countries API, but only eight is visible initially (if you're using desktop). Loading all 250 images of each country's flag would waste the user's bandwidth, so I added the `loading="lazy"` attribute to the image tags in the homepage.
 
-Remember, if you're looking for feedback on your solution, be sure to ask questions when submitting it. The more specific and detailed you are with your questions, the higher the chance you'll get valuable feedback from the community.
+**Caching data with ~~React~~ TanStack Query**
 
-## Sharing your solution
+Using React Query for data fetching out of the box speeds up subsequent page loads since it uses the cache. However, it still does a background refetch every time a user navigates to a page. Since the data we're dealing with doesn't change as often, I set a longer stale time so the same data will only be refetched after five minutes.
 
-There are multiple places you can share your solution:
+```js
+const { isPending, isError, data, error } = useQuery({
+  queryKey: ['countries'],
+  queryFn: getCountries,
+  staleTime: 5 * 60 * 1000, // fetched data is fresh for 5 minutes
+})
+```
 
-1. Share your solution page in the **#finished-projects** channel of the [community](https://www.frontendmentor.io/community). 
-2. Tweet [@frontendmentor](https://twitter.com/frontendmentor) and mention **@frontendmentor**, including the repo and live URLs in the tweet. We'd love to take a look at what you've built and help share it around.
-3. Share your solution on other social channels like LinkedIn.
-4. Blog about your experience building your project. Writing about your workflow, technical choices, and talking through your code is a brilliant way to reinforce what you've learned. Great platforms to write on are [dev.to](https://dev.to/), [Hashnode](https://hashnode.com/), and [CodeNewbie](https://community.codenewbie.org/).
+**From TypeScript noob to TypeScript enthusiast**
 
-We provide templates to help you share your solution once you've submitted it on the platform. Please do edit them and include specific questions when you're looking for feedback. 
+It's been a year since my first attempt at this challenge, and I think I've learned quite a bit about TypeScript to appreciate its value for developers: the peace of mind that your code will do what you expect it to do.
 
-The more specific you are with your questions the more likely it is that another member of the community will give you feedback.
+My favorite feature is hovering over variables and functions in VS Code to see types, parameters, etc. This greatly helps my thinking and speeds up my workflow; sometimes, instead of checking out a documentation site, I find that I can figure out what to do simply by looking at a function's parameter and return types.
 
-## Got feedback for us?
+<!-- ### Continued development
 
-We love receiving feedback! We're always looking to improve our challenges and our platform. So if you have anything you'd like to mention, please email hi[at]frontendmentor[dot]io.
+Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
 
-This challenge is completely free. Please share it with anyone who will find it useful for practice.
+**Note: Delete this note and the content within this section and replace with your own plans for continued development.** -->
 
-**Have fun building!** 🚀
+### Useful resources
+
+- [Building a theme switch component](https://web.dev/articles/building/a-theme-switch-component)
+- [Essential TypeScript 5, Third Edition](https://www.manning.com/books/essential-typescript-5-third-edition) and [Effective TypeScript](https://effectivetypescript.com/) - The first book helped me grasp the foundational concepts of TypeScript. I'm currently reading through the second one and discovering deeper insights on the subject.
+
+## Author
+
+- Website - [Josh Javier](https://joshjavier.com)
+- Frontend Mentor - [@joshjavier](https://www.frontendmentor.io/profile/joshjavier)
+- Twitter - [@joshjavierr](https://www.twitter.com/joshjavierr)
+- LinkedIn - [Josh Javier](https://www.linkedin.com/in/joshjavier)
+
+<!-- ## Acknowledgments
+
+This is where you can give a hat tip to anyone who helped you out on this project. Perhaps you worked in a team or got some inspiration from someone else's solution. This is the perfect place to give them some credit.
+
+**Note: Delete this note and edit this section's content as necessary. If you completed this challenge by yourself, feel free to delete this section entirely.** -->
